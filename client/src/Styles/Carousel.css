@@ -1,0 +1,36 @@
+.product_carousel {
+  margin-bottom: 25%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.product_carousel_image {
+  
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+
+.product_carousel_caption {
+  scale: 220%;
+  text-shadow: -1px 1px 1px rgba(0,0,0, 095);
+  margin-top: -15%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .product_carousel {
+    margin-bottom: 25%;
+  }
+  .product_carousel_caption {
+    scale: 140%;
+  }
+  .product_carousel_image {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .product_carousel_image {
+    width: 60%;
+  }
+}

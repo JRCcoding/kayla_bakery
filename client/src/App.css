@@ -1,0 +1,29 @@
+html, body {
+  overflow-x: hidden;
+}
+
+.background_pattern {
+  background-image: url(./Images/webp/lncbgpattern.webp), linear-gradient(to bottom,rgb(153,115,170), rgb(250, 200, 234) 30%,rgb(250, 200, 234), rgb(255, 241, 252) 99.9%);
+  background-repeat:repeat;
+  background-size: 200px;
+  /* background-color: #A8C5A2; */
+  /* background: linear-gradient(to bottom,rgb(153,115,170), rgb(250, 200, 234) 30%,rgb(250, 200, 234)) */
+}
+@media only screen and (max-width: 600px) {
+  .background_pattern {
+    background-image: url(./Images/webp/lncbgpattern.webp), linear-gradient(to bottom,rgb(153,115,170), rgb(250, 200, 234) 30%,rgb(250, 200, 234));
+
+  }
+}
+
+
+.product_page_box {
+  height: 100%;
+}
+
+.spinner {
+  padding-bottom: 100vh;
+}
+.clickable:hover {
+  cursor: pointer;
+}

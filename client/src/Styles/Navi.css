@@ -1,0 +1,74 @@
+.logo {
+  scale: 1.8;
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+
+.navtitle{ 
+  font-size: 2.2rem;
+  margin: 4%;
+  text-shadow: 3px 3px 5px  rgba(10, 0, 10, .7);
+  transition: all 1s;
+}
+.navtitle:hover {
+  cursor: pointer;
+}
+.navlinks {
+  justify-content: end;
+  margin-right: 3%;
+}
+
+.navlink {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-left: 25px;
+  text-align: right;
+  transition: all 1s;
+}
+  
+.navlink:hover {
+  cursor: pointer;
+  text-shadow: 3px 3px 5px  rgba(10, 0, 10, .7);
+  color: #a1a1a1;
+
+}
+.toggler {
+  filter: invert(1);
+}
+
+
+
+
+
+@media only screen and (min-width: 600px) {
+  .navlink {
+    font-size: 1.2rem;
+  }
+  .navtitle{
+    font-size: 2.0rem;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+.navi {
+    margin-left: 0;
+    margin-right: 0;
+}
+.navtitle {
+    font-size: 1.46rem;
+    margin: 7% -10% 7% 0%;
+}
+.toggler {
+  margin: 0;
+}
+.logo {
+  display: none;
+}
+.navlinks {
+  margin-right: 0;
+}
+}
