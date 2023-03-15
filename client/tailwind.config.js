@@ -9,7 +9,7 @@ module.exports = {
     },
     colors: {
       Logo: '#B849D8',
-      Navbar: '#c572da',
+      Navbar: '#9300d4',
       Navtitle: '#F4F2F2',
       AccentText: '#1b161f',
       LightBG: '#ebeeef',

@@ -37,7 +37,7 @@ export default function App() {
         <LinkContainer to='/'>
           <Navbar.Brand>
             <h6 className='d-inline navtitle font-Pacifico text-Navtitle'>
-              Kayla's Baked Goods
+              Kaylala Kakes
             </h6>
           </Navbar.Brand>
         </LinkContainer>
