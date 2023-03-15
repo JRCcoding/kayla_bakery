@@ -1,4 +1,3 @@
-import Logo from '../Images/webp/logo_transparent.webp'
 import '../index.css'
 import '../App.css'
 import React, { useState } from 'react'
@@ -37,15 +36,8 @@ export default function App() {
       <Container>
         <LinkContainer to='/'>
           <Navbar.Brand>
-            <img
-              alt=''
-              src={Logo}
-              width='60'
-              height='60'
-              className='logo align-top'
-            />{' '}
             <h6 className='d-inline navtitle font-Pacifico text-Navtitle'>
-              Lauryn's Next-door Cottage
+              Kayla's Baked Goods
             </h6>
           </Navbar.Brand>
         </LinkContainer>

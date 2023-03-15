@@ -5,7 +5,7 @@ import Meta from '../Components/Meta'
 const ProductsScreen = () => {
   return (
     <div className='background_pattern'>
-      <Meta title='LNC Products' />
+      <Meta title='Kaylala Kakes Products' />
       <Products />
     </div>
   )

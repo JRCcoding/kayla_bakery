@@ -5,7 +5,7 @@ import Meta from '../Components/Meta'
 const ShippingScreen = () => {
   return (
     <div className='background_pattern'>
-      <Meta title='LNC Delivery' />
+      <Meta title='Delivery' />
       <Shipping />
     </div>
   )

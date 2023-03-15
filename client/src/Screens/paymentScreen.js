@@ -5,7 +5,7 @@ import Meta from '../Components/Meta'
 const PaymentScreen = () => {
   return (
     <div className='background_pattern'>
-      <Meta title='LNC Payment' />
+      <Meta title='Payment' />
       <Payment />
     </div>
   )

@@ -6,7 +6,7 @@ import Order from '../Components/Order'
 const OrderScreen = () => {
   return (
     <div className='background_pattern'>
-      <Meta title='LNC Order' />
+      <Meta title='Order' />
       <Fade up>
         <Order />
       </Fade>

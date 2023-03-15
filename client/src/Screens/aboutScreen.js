@@ -6,7 +6,7 @@ import Meta from '../Components/Meta'
 const AboutScreen = () => {
   return (
     <div className='background_pattern'>
-      <Meta title='About LNC Treats' />
+      <Meta title='About Kayla' />
       <Fade up>
         <About />
       </Fade>

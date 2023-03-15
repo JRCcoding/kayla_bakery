@@ -15,10 +15,10 @@ import Meta from '../Components/Meta'
 const contactScreen = () => {
   return (
     <div className='background_pattern'>
-      <Meta title='Contact LNC Treats' />
+      <Meta title='Contact Kayla' />
       <Fade up>
         <Contact />
-        <div className='map_box'>{/* <GoogleMaps /> */}</div>
+        {/* <div className='map_box'><GoogleMaps /></div> */}
         <MDBCard className='contact_info_box'>
           <MDBCardTitle>
             There are plenty of other ways to contact me:

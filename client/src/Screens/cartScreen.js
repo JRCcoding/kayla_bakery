@@ -6,7 +6,7 @@ import Meta from '../Components/Meta'
 const cartScreen = () => {
   return (
     <div className='background_pattern'>
-      <Meta title='LNC Shopping Cart' />
+      <Meta title='Shopping Cart' />
       <Fade up>
         <Cart />
       </Fade>

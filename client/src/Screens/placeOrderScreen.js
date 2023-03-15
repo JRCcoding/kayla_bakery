@@ -6,7 +6,7 @@ import Meta from '../Components/Meta'
 const PlaceOrderScreen = () => {
   return (
     <div className='background_pattern'>
-      <Meta title='LNC Place Order' />
+      <Meta title='Place Order' />
       <Fade up>
         <PlaceOrder />
       </Fade>

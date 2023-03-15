@@ -31,7 +31,7 @@ const LoginScreen = ({ location, history }) => {
 
   return (
     <div className='background_pattern'>
-      <Meta title='LNC Login' />
+      <Meta title='Login' />
       <Container>
         <Card>
           <FormContainer>
