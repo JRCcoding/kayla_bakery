@@ -36,7 +36,7 @@ export default function App() {
       <Container>
         <LinkContainer to='/'>
           <Navbar.Brand>
-            <h6 className='d-inline navtitle font-Pacifico text-Navtitle'>
+            <h6 className='d-inline navtitle font-WindSong text-Navtitle'>
               Kaylala Kakes
             </h6>
           </Navbar.Brand>

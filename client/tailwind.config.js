@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         Pacifico: ['Pacifico', 'cursive'],
+        WindSong: ['WindSong', 'cursive'],
       },
     },
     colors: {

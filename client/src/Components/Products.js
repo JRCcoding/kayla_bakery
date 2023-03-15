@@ -8,7 +8,6 @@ import { Fade } from 'react-reveal'
 import { LinkContainer } from 'react-router-bootstrap'
 import '../Styles/Product.css'
 import Message from './Message'
-//Real G's move in silence like lasagna
 
 const Products = () => {
   const dispatch = useDispatch()
@@ -33,9 +32,9 @@ const Products = () => {
               ) : (
                 <Container className='product_list'>
                   <Row xs={1} sm={1} md={2} lg={4}>
-                    {products.reverse().map((product) => (
+                    {products.map((product) => (
                       <div key={product}>
-                        {product && product.category === 'standard' && (
+                        {product && product && (
                           <Card className='product_card md:mb-5 mt-2'>
                             <LinkContainer to={`/product/${product._id}`}>
                               <Image
