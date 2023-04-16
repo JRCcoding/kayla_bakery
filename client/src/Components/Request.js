@@ -12,35 +12,35 @@ import {
   Container,
 } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import Message from '../Components/Message'
-import Loader from '../Components/Loader'
+import Message from './Message'
+import Loader from './Loader'
 import {
-  getOrderDetails,
-  payOrder,
-  payOrderAdmin,
-  deliverOrder,
-} from '../Actions/orderActions'
+  getRequestDetails,
+  payRequest,
+  payRequestAdmin,
+  deliverRequest,
+} from '../Actions/requestActions'
 import {
-  ORDER_PAY_RESET,
-  ORDER_DELIVER_RESET,
-} from '../Constants/orderConstants'
+  REQUEST_PAY_RESET,
+  REQUEST_DELIVER_RESET,
+} from '../Constants/requestConstants'
 import { withRouter } from 'react-router-dom'
 
-const Order = ({ match, history }) => {
-  const orderId = match.params.id
+const Request = ({ match, history }) => {
+  const requestId = match.params.id
 
   const [sdkReady, setSdkReady] = useState(false)
 
   const dispatch = useDispatch()
 
-  const orderDetails = useSelector((state) => state.orderDetails)
-  const { order, loading, error } = orderDetails
+  const requestDetails = useSelector((state) => state.requestDetails)
+  const { request, loading, error } = requestDetails
 
-  const orderPay = useSelector((state) => state.orderPay)
-  const { loading: loadingPay, success: successPay } = orderPay
+  const requestPay = useSelector((state) => state.requestPay)
+  const { loading: loadingPay, success: successPay } = requestPay
 
-  const orderDeliver = useSelector((state) => state.orderDeliver)
-  const { loading: loadingDeliver, success: successDeliver } = orderDeliver
+  const requestDeliver = useSelector((state) => state.requestDeliver)
+  const { loading: loadingDeliver, success: successDeliver } = requestDeliver
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -51,8 +51,8 @@ const Order = ({ match, history }) => {
       return (Math.round(num * 100) / 100).toFixed(2)
     }
 
-    order.itemsPrice = addDecimals(
-      order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+    request.itemsPrice = addDecimals(
+      request.requestItems.reduce((acc, item) => acc + item.price * item.qty, 0)
     )
   }
 
@@ -73,30 +73,30 @@ const Order = ({ match, history }) => {
       document.body.appendChild(script)
     }
 
-    if (!order || successPay || order._id !== orderId) {
-      dispatch({ type: ORDER_PAY_RESET })
-      dispatch({ type: ORDER_DELIVER_RESET })
-      dispatch(getOrderDetails(orderId))
-    } else if (!order.isPaid) {
+    if (!request || successPay || request._id !== requestId) {
+      dispatch({ type: REQUEST_PAY_RESET })
+      dispatch({ type: REQUEST_DELIVER_RESET })
+      dispatch(getRequestDetails(requestId))
+    } else if (!request.isPaid) {
       if (!window.paypal) {
         addPayPalScript()
       } else {
         setSdkReady(true)
       }
     }
-  }, [dispatch, orderId, successPay, order, userInfo, history])
+  }, [dispatch, requestId, successPay, request, userInfo, history])
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult)
-    dispatch(payOrder(orderId, paymentResult))
+    dispatch(payRequest(requestId, paymentResult))
   }
 
   const deliverHandler = () => {
-    dispatch(deliverOrder(order))
+    dispatch(deliverRequest(request))
     window.location.reload(false)
   }
   const paymentHandler = () => {
-    dispatch(payOrderAdmin(orderId))
+    dispatch(payRequestAdmin(requestId))
     window.location.reload(false)
   }
 
@@ -108,37 +108,37 @@ const Order = ({ match, history }) => {
     <>
       <Container>
         <Card>
-          <h1>Order {order._id.substring(19, 24)}</h1>
+          <h1>Request {request._id.substring(19, 24)}</h1>
           <Row>
             <Col md={8}>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
                   <h2>Shipping</h2>
                   <p>
-                    <strong>Name: </strong> {order.user.name}
+                    <strong>Name: </strong> {request.user.name}
                   </p>
                   <p>
-                    <strong>Number: </strong> {order.user.number}
+                    <strong>Number: </strong> {request.user.number}
                   </p>
                   <p>
                     <strong>Email: </strong>{' '}
-                    <a href={`mailto:${order.user.email}`}>
-                      {order.user.email}
+                    <a href={`mailto:${request.user.email}`}>
+                      {request.user.email}
                     </a>
                   </p>
                   <p>
-                    <strong>Pickup: </strong> {order.shippingAddress.pickup}
+                    <strong>Pickup: </strong> {request.shippingAddress.pickup}
                   </p>
                   <p>
                     <strong>Address:</strong>
-                    {order.shippingAddress.address},{' '}
-                    {order.shippingAddress.city}{' '}
-                    {order.shippingAddress.postalCode},{' '}
-                    {order.shippingAddress.country}
+                    {request.shippingAddress.address},{' '}
+                    {request.shippingAddress.city}{' '}
+                    {request.shippingAddress.postalCode},{' '}
+                    {request.shippingAddress.country}
                   </p>
-                  {order.isDelivered ? (
+                  {request.isDelivered ? (
                     <Message variant='success'>
-                      Delivered on {order.deliveredAt}
+                      Delivered on {request.deliveredAt}
                     </Message>
                   ) : (
                     <Message variant='danger'>Not Delivered</Message>
@@ -149,22 +149,24 @@ const Order = ({ match, history }) => {
                   <h2>Payment Method</h2>
                   <p>
                     <strong>Method: </strong>
-                    {order.paymentMethod}
+                    {request.paymentMethod}
                   </p>
-                  {order.isPaid ? (
-                    <Message variant='success'>Paid on {order.paidAt}</Message>
+                  {request.isPaid ? (
+                    <Message variant='success'>
+                      Paid on {request.paidAt}
+                    </Message>
                   ) : (
                     <Message variant='danger'>Not Paid</Message>
                   )}
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <h2>Order Items</h2>
-                  {order.orderItems.length === 0 ? (
-                    <Message>Order is empty</Message>
+                  <h2>Request Items</h2>
+                  {request.requestItems.length === 0 ? (
+                    <Message>Request is empty</Message>
                   ) : (
                     <ListGroup variant='flush'>
-                      {order.orderItems.map((item, index) => (
+                      {request.requestItems.map((item, index) => (
                         <ListGroup.Item key={index}>
                           <Row>
                             <Col md={1}>
@@ -196,47 +198,47 @@ const Order = ({ match, history }) => {
               <Card>
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
-                    <h2>Order Summary</h2>
+                    <h2>Request Summary</h2>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
                       <Col>Items</Col>
-                      <Col>${order.itemsPrice}</Col>
+                      <Col>${request.itemsPrice}</Col>
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
                       <Col>Shipping</Col>
-                      <Col>${order.shippingPrice}</Col>
+                      <Col>${request.shippingPrice}</Col>
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
                       <Col>Tax</Col>
-                      <Col>${order.taxPrice}</Col>
+                      <Col>${request.taxPrice}</Col>
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
                       <Col>Total</Col>
-                      <Col>${order.totalPrice}</Col>
+                      <Col>${request.totalPrice}</Col>
                     </Row>
                   </ListGroup.Item>
-                  {!order.isPaid && !userInfo.isAdmin && (
+                  {!request.isPaid && !userInfo.isAdmin && (
                     <ListGroup.Item>
                       {loadingPay && <Loader />}
                       {!sdkReady ? (
                         <Loader />
                       ) : (
                         <PayPalButton
-                          amount={order.totalPrice}
+                          amount={request.totalPrice}
                           onSuccess={successPaymentHandler}
                         />
                       )}
                     </ListGroup.Item>
                   )}
 
-                  {userInfo && userInfo.isAdmin && !order.isDelivered && (
+                  {userInfo && userInfo.isAdmin && !request.isDelivered && (
                     <ListGroup.Item>
                       <Button
                         type='button'
@@ -247,7 +249,7 @@ const Order = ({ match, history }) => {
                       </Button>
                     </ListGroup.Item>
                   )}
-                  {userInfo && userInfo.isAdmin && !order.isPaid && (
+                  {userInfo && userInfo.isAdmin && !request.isPaid && (
                     <ListGroup.Item>
                       <Button
                         type='button'
@@ -268,4 +270,4 @@ const Order = ({ match, history }) => {
   )
 }
 
-export default withRouter(Order)
+export default withRouter(Request)

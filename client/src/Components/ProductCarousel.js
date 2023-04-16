@@ -28,7 +28,7 @@ const ProductCarousel = () => {
           {products &&
             products.reverse().map((product) => (
               <Carousel.Item key={product}>
-                {product.category !== 'valentine' && (
+                {product && (
                   <>
                     <LinkContainer to={`/product/${product._id}`}>
                       <Image

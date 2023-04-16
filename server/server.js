@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import productRoutes from './routes/productRoutes.js'
 import contactRoutes from './routes/contactRoutes.js'
 import userRoutes from './routes/userRoutes.js'
-import orderRoutes from './routes/orderRoutes.js'
+import requestRoutes from './routes/requestRoutes.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import path from 'path'
 import colors from 'colors'
@@ -34,7 +34,7 @@ const __dirname = path.resolve()
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/contacts', contactRoutes)
-app.use('/api/orders', orderRoutes)
+app.use('/api/requests', requestRoutes)
 
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)

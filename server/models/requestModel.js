@@ -1,13 +1,13 @@
 import mongoose from 'mongoose'
 
-const orderSchema = mongoose.Schema(
+const requestSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'User',
     },
-    orderItems: [
+    requestItems: [
       {
         name: { type: String, required: true },
         qty: { type: Number, required: true },
@@ -74,6 +74,6 @@ const orderSchema = mongoose.Schema(
   }
 )
 
-const Order = mongoose.model('Order', orderSchema)
+const Request = mongoose.model('Request', requestSchema)
 
-export default Order
+export default Request

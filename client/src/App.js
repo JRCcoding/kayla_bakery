@@ -3,9 +3,9 @@ import HomeScreen from './Screens/homeScreen'
 import CartScreen from './Screens/cartScreen'
 import ShippingScreen from './Screens/shippingScreen'
 import PaymentScreen from './Screens/paymentScreen'
-import PlaceOrderScreen from './Screens/placeOrderScreen'
-import OrderScreen from './Screens/orderScreen'
-import OrderListScreen from './Screens/orderListScreen'
+import PlaceRequestScreen from './Screens/placeRequestScreen'
+import RequestScreen from './Screens/requestScreen'
+import RequestListScreen from './Screens/requestListScreen'
 import LoginScreen from './Screens/loginScreen'
 import RegisterScreen from './Screens/registerScreen'
 import ProfileScreen from './Screens/profileScreen'
@@ -26,9 +26,9 @@ function App() {
         <Route path='/cart/:id?' component={CartScreen} />
         <Route path='/shipping' component={ShippingScreen} />
         <Route path='/payment' component={PaymentScreen} />
-        <Route path='/placeorder' component={PlaceOrderScreen} />
-        <Route path='/order/:id' component={OrderScreen} />
-        <Route path='/admin/orderlist' component={OrderListScreen} />
+        <Route path='/placerequest' component={PlaceRequestScreen} />
+        <Route path='/request/:id' component={RequestScreen} />
+        <Route path='/admin/requestlist' component={RequestListScreen} />
         <Route path='/login' component={LoginScreen} />
         <Route path='/register' component={RegisterScreen} />
         <Route path='/profile' component={ProfileScreen} />
