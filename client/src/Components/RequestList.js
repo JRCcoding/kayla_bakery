@@ -2,22 +2,22 @@ import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Container, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import Message from '../Components/Message'
-import Loader from '../Components/Loader'
-import { listOrders } from '../Actions/orderActions'
+import Message from './Message'
+import Loader from './Loader'
+import { listRequests } from '../Actions/requestActions'
 
-const OrderListScreen = ({ history }) => {
+const RequestListScreen = ({ history }) => {
   const dispatch = useDispatch()
 
-  const orderList = useSelector((state) => state.orderList)
-  const { loading, error, orders } = orderList
+  const requestList = useSelector((state) => state.requestList)
+  const { loading, error, requests } = requestList
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      dispatch(listOrders())
+      dispatch(listRequests())
     } else {
       history.push('/login')
     }
@@ -27,13 +27,13 @@ const OrderListScreen = ({ history }) => {
     <>
       <Container>
         <Card>
-          <h1>Orders</h1>
+          <h1>Requests</h1>
           {loading ? (
             <Loader />
           ) : error ? (
             <Message variant='danger'>{error}</Message>
           ) : (
-            <Table striped bordered hover responsive className='table-sm'>
+            <Table striped brequested hover responsive className='table-sm'>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -46,15 +46,15 @@ const OrderListScreen = ({ history }) => {
                 </tr>
               </thead>
               <tbody>
-                {orders.map((order) => (
-                  <tr key={order._id}>
-                    <td>{order._id.substring(19, 24)}</td>
-                    <td>{order.user && order.user.name}</td>
-                    <td>{order.createdAt.substring(0, 10)}</td>
-                    <td>${order.totalPrice}</td>
+                {requests.map((request) => (
+                  <tr key={request._id}>
+                    <td>{request._id.substring(19, 24)}</td>
+                    <td>{request.user && request.user.name}</td>
+                    <td>{request.createdAt.substring(0, 10)}</td>
+                    <td>${request.totalPrice}</td>
                     <td>
-                      {order.isPaid ? (
-                        order.paidAt.substring(0, 10)
+                      {request.isPaid ? (
+                        request.paidAt.substring(0, 10)
                       ) : (
                         <i
                           className='fas fa-times'
@@ -63,8 +63,8 @@ const OrderListScreen = ({ history }) => {
                       )}
                     </td>
                     <td>
-                      {order.isDelivered ? (
-                        order.deliveredAt.substring(0, 10)
+                      {request.isDelivered ? (
+                        request.deliveredAt.substring(0, 10)
                       ) : (
                         <i
                           className='fas fa-times'
@@ -73,7 +73,7 @@ const OrderListScreen = ({ history }) => {
                       )}
                     </td>
                     <td>
-                      <LinkContainer to={`/order/${order._id}`}>
+                      <LinkContainer to={`/request/${request._id}`}>
                         <Button variant='light' className='btn-sm'>
                           Details
                         </Button>
@@ -90,4 +90,4 @@ const OrderListScreen = ({ history }) => {
   )
 }
 
-export default OrderListScreen
+export default RequestListScreen

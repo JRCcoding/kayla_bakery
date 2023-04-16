@@ -36,7 +36,10 @@ export default function App() {
       <Container>
         <LinkContainer to='/'>
           <Navbar.Brand>
-            <h6 className='d-inline navtitle font-WindSong text-Navtitle'>
+            <h6
+              className='d-inline navtitle font-WindSong text-Navtitle'
+              style={{ zIndex: '9999' }}
+            >
               Kaylala Kakes
             </h6>
           </Navbar.Brand>
@@ -86,26 +89,26 @@ export default function App() {
               //   <LinkContainer to='/admin/productlist'>
               //     <MDBDropdownItem>Products</MDBDropdownItem>
               //   </LinkContainer>
-              <LinkContainer to='/admin/orderlist'>
-                <MDBNavbarItem className='navlink'>Orders</MDBNavbarItem>
+              <LinkContainer to='/admin/requestlist'>
+                <MDBNavbarItem className='navlink'>Requests</MDBNavbarItem>
               </LinkContainer>
               // </NavDropdown>
             )}
-            <LinkContainer to='/cart'>
+            {/* <LinkContainer to='/cart'>
               <MDBNavbarItem link className='navlink'>
                 <i className='fas fa-shopping-cart'></i> Cart
               </MDBNavbarItem>
-            </LinkContainer>
+            </LinkContainer> */}
             <LinkContainer to='/products'>
               <MDBNavbarItem link className='navlink clickable'>
                 Products
               </MDBNavbarItem>
             </LinkContainer>
-            <LinkContainer to='/about'>
+            {/* <LinkContainer to='/about'>
               <MDBNavbarItem link className='navlink'>
                 About
               </MDBNavbarItem>
-            </LinkContainer>
+            </LinkContainer> */}
             <LinkContainer to='/contact'>
               <MDBNavbarItem link className='navlink'>
                 Contact

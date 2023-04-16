@@ -3,9 +3,9 @@ import HomeScreen from './Screens/homeScreen'
 import CartScreen from './Screens/cartScreen'
 import ShippingScreen from './Screens/shippingScreen'
 import PaymentScreen from './Screens/paymentScreen'
-import PlaceOrderScreen from './Screens/placeOrderScreen'
-import OrderScreen from './Screens/orderScreen'
-import OrderListScreen from './Screens/orderListScreen'
+import PlaceRequestScreen from './Screens/placeRequestScreen'
+import RequestScreen from './Screens/requestScreen'
+import RequestListScreen from './Screens/requestListScreen'
 import LoginScreen from './Screens/loginScreen'
 import RegisterScreen from './Screens/registerScreen'
 import ProfileScreen from './Screens/profileScreen'
@@ -16,6 +16,8 @@ import AboutScreen from './Screens/aboutScreen'
 import Navi from './Components/Navi'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Footer from './Components/Footer'
+import CakeScreen from './Screens/cakeScreen'
+import CupcakeScreen from './Screens/cupcakeScreen'
 
 function App() {
   return (
@@ -23,12 +25,14 @@ function App() {
       <Router>
         <Navi />
         <Route path='/' exact component={HomeScreen} />
+        <Route path='/cakes' component={CakeScreen} />
+        <Route path='/cupcakes' component={CupcakeScreen} />
         <Route path='/cart/:id?' component={CartScreen} />
         <Route path='/shipping' component={ShippingScreen} />
         <Route path='/payment' component={PaymentScreen} />
-        <Route path='/placeorder' component={PlaceOrderScreen} />
-        <Route path='/order/:id' component={OrderScreen} />
-        <Route path='/admin/orderlist' component={OrderListScreen} />
+        <Route path='/placerequest' component={PlaceRequestScreen} />
+        <Route path='/request/:id' component={RequestScreen} />
+        <Route path='/admin/requestlist' component={RequestListScreen} />
         <Route path='/login' component={LoginScreen} />
         <Route path='/register' component={RegisterScreen} />
         <Route path='/profile' component={ProfileScreen} />

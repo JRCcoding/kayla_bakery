@@ -16,7 +16,7 @@ const contactScreen = () => {
   return (
     <div className='background_pattern'>
       <Meta title='Contact Kayla' />
-      <Fade up>
+      <Fade>
         <Contact />
         {/* <div className='map_box'><GoogleMaps /></div> */}
         <MDBCard className='contact_info_box'>

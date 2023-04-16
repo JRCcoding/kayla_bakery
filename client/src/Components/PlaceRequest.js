@@ -10,14 +10,14 @@ import {
   Container,
 } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import Message from '../Components/Message'
-import CheckoutSteps from '../Components/CheckoutSteps'
-import { createOrder } from '../Actions/orderActions'
-import { ORDER_CREATE_RESET } from '../Constants/orderConstants'
+import Message from './Message'
+import CheckoutSteps from './CheckoutSteps'
+import { createRequest } from '../Actions/requestActions'
+import { REQUEST_CREATE_RESET } from '../Constants/requestConstants'
 import { USER_DETAILS_RESET } from '../Constants/userConstants'
 import { withRouter } from 'react-router-dom'
 
-const PlaceOrder = ({ history }) => {
+const PlaceRequest = ({ history }) => {
   const dispatch = useDispatch()
 
   const cart = useSelector((state) => state.cart)
@@ -41,21 +41,21 @@ const PlaceOrder = ({ history }) => {
     // Number(cart.taxPrice)
     .toFixed(2)
 
-  const orderCreate = useSelector((state) => state.orderCreate)
-  const { order, success, error } = orderCreate
+  const requestCreate = useSelector((state) => state.requestCreate)
+  const { request, success, error } = requestCreate
 
   useEffect(() => {
     if (success) {
-      history.push(`/order/${order._id}`)
+      history.push(`/request/${request._id}`)
       // dispatch({ type: USER_DETAILS_RESET })
-      // dispatch({ type: ORDER_CREATE_RESET })
+      // dispatch({ type: REQUEST_CREATE_RESET })
     }
   })
 
-  const placeOrderHandler = () => {
+  const placeRequestHandler = () => {
     dispatch(
-      createOrder({
-        orderItems: cart.cartItems,
+      createRequest({
+        requestItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
@@ -96,7 +96,7 @@ const PlaceOrder = ({ history }) => {
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <h2>Order Items</h2>
+                  <h2>Request Items</h2>
                   {cart.cartItems.length === 0 ? (
                     <Message>Your cart is empty</Message>
                   ) : (
@@ -133,7 +133,7 @@ const PlaceOrder = ({ history }) => {
               <Card>
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
-                    <h2>Order Summary</h2>
+                    <h2>Request Summary</h2>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
@@ -167,9 +167,9 @@ const PlaceOrder = ({ history }) => {
                       type='button'
                       className='btn-block'
                       disabled={cart.cartItems === 0}
-                      onClick={placeOrderHandler}
+                      onClick={placeRequestHandler}
                     >
-                      Place Order
+                      Place Request
                     </Button>
                   </ListGroup.Item>
                 </ListGroup>
@@ -182,4 +182,4 @@ const PlaceOrder = ({ history }) => {
   )
 }
 
-export default withRouter(PlaceOrder)
+export default withRouter(PlaceRequest)

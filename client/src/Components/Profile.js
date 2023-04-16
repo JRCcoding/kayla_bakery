@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { getUserDetails, updateUserProfile } from '../Actions/userActions'
-import { listMyOrders } from '../Actions/orderActions'
+import { listMyRequests } from '../Actions/requestActions'
 import { USER_UPDATE_PROFILE_RESET } from '../Constants/userConstants'
 import { withRouter } from 'react-router-dom'
 
@@ -28,8 +28,12 @@ const Profile = ({ location, history }) => {
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
   const { success } = userUpdateProfile
 
-  const orderListMy = useSelector((state) => state.orderListMy)
-  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
+  const requestListMy = useSelector((state) => state.requestListMy)
+  const {
+    loading: loadingRequests,
+    error: errorRequests,
+    requests,
+  } = requestListMy
 
   useEffect(() => {
     if (!userInfo) {
@@ -38,7 +42,7 @@ const Profile = ({ location, history }) => {
       if (!user || !user.name || success) {
         dispatch({ type: USER_UPDATE_PROFILE_RESET })
         dispatch(getUserDetails('profile'))
-        dispatch(listMyOrders())
+        dispatch(listMyRequests())
       } else {
         setName(user.name)
         setEmail(user.email)
@@ -130,13 +134,13 @@ const Profile = ({ location, history }) => {
             )}
           </Col>
           <Col md={9}>
-            <h2>My Orders</h2>
-            {loadingOrders ? (
+            <h2>My Requests</h2>
+            {loadingRequests ? (
               <Loader />
-            ) : errorOrders ? (
-              <Message variant='danger'>{errorOrders}</Message>
+            ) : errorRequests ? (
+              <Message variant='danger'>{errorRequests}</Message>
             ) : (
-              <Table striped bordered hover responsive className='table-sm'>
+              <Table striped brequested hover responsive className='table-sm'>
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -148,14 +152,14 @@ const Profile = ({ location, history }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {orders.map((order) => (
-                    <tr key={order._id}>
-                      <td>{order._id}</td>
-                      <td>{order.createdAt.substring(0, 10)}</td>
-                      <td>${order.totalPrice}</td>
+                  {requests.map((request) => (
+                    <tr key={request._id}>
+                      <td>{request._id}</td>
+                      <td>{request.createdAt.substring(0, 10)}</td>
+                      <td>${request.totalPrice}</td>
                       <td>
-                        {order.isPaid ? (
-                          order.paidAt.substring(0, 10)
+                        {request.isPaid ? (
+                          request.paidAt.substring(0, 10)
                         ) : (
                           <i
                             className='fas fa-times'
@@ -164,8 +168,8 @@ const Profile = ({ location, history }) => {
                         )}
                       </td>
                       <td>
-                        {order.isDelivered ? (
-                          order.deliveredAt.substring(0, 10)
+                        {request.isDelivered ? (
+                          request.deliveredAt.substring(0, 10)
                         ) : (
                           <i
                             className='fas fa-times'
@@ -174,7 +178,7 @@ const Profile = ({ location, history }) => {
                         )}
                       </td>
                       <td>
-                        <LinkContainer to={`/order/${order._id}`}>
+                        <LinkContainer to={`/request/${request._id}`}>
                           <Button className='btn-sm' variant='light'>
                             Details
                           </Button>

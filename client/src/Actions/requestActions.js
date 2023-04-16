@@ -1,31 +1,31 @@
 import axios from 'axios'
 import { CART_CLEAR_ITEMS } from '../Constants/cartConstants'
 import {
-  ORDER_CREATE_REQUEST,
-  ORDER_CREATE_SUCCESS,
-  ORDER_CREATE_FAIL,
-  ORDER_DETAILS_FAIL,
-  ORDER_DETAILS_SUCCESS,
-  ORDER_DETAILS_REQUEST,
-  ORDER_PAY_FAIL,
-  ORDER_PAY_SUCCESS,
-  ORDER_PAY_REQUEST,
-  ORDER_LIST_MY_REQUEST,
-  ORDER_LIST_MY_SUCCESS,
-  ORDER_LIST_MY_FAIL,
-  ORDER_LIST_FAIL,
-  ORDER_LIST_SUCCESS,
-  ORDER_LIST_REQUEST,
-  ORDER_DELIVER_FAIL,
-  ORDER_DELIVER_SUCCESS,
-  ORDER_DELIVER_REQUEST,
-} from '../Constants/orderConstants'
+  REQUEST_CREATE_REQUEST,
+  REQUEST_CREATE_SUCCESS,
+  REQUEST_CREATE_FAIL,
+  REQUEST_DETAILS_FAIL,
+  REQUEST_DETAILS_SUCCESS,
+  REQUEST_DETAILS_REQUEST,
+  REQUEST_PAY_FAIL,
+  REQUEST_PAY_SUCCESS,
+  REQUEST_PAY_REQUEST,
+  REQUEST_LIST_MY_REQUEST,
+  REQUEST_LIST_MY_SUCCESS,
+  REQUEST_LIST_MY_FAIL,
+  REQUEST_LIST_FAIL,
+  REQUEST_LIST_SUCCESS,
+  REQUEST_LIST_REQUEST,
+  REQUEST_DELIVER_FAIL,
+  REQUEST_DELIVER_SUCCESS,
+  REQUEST_DELIVER_REQUEST,
+} from '../Constants/requestConstants'
 import { logout } from './userActions'
 
-export const createOrder = (order) => async (dispatch, getState) => {
+export const createRequest = (request) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: ORDER_CREATE_REQUEST,
+      type: REQUEST_CREATE_REQUEST,
     })
 
     const {
@@ -39,10 +39,10 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`/api/orders`, order, config)
+    const { data } = await axios.post(`/api/requests`, request, config)
 
     dispatch({
-      type: ORDER_CREATE_SUCCESS,
+      type: REQUEST_CREATE_SUCCESS,
       payload: data,
     })
     dispatch({
@@ -59,16 +59,16 @@ export const createOrder = (order) => async (dispatch, getState) => {
       dispatch(logout())
     }
     dispatch({
-      type: ORDER_CREATE_FAIL,
+      type: REQUEST_CREATE_FAIL,
       payload: message,
     })
   }
 }
 
-export const getOrderDetails = (id) => async (dispatch, getState) => {
+export const getRequestDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: ORDER_DETAILS_REQUEST,
+      type: REQUEST_DETAILS_REQUEST,
     })
 
     const {
@@ -81,10 +81,10 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/orders/${id}`, config)
+    const { data } = await axios.get(`/api/requests/${id}`, config)
 
     dispatch({
-      type: ORDER_DETAILS_SUCCESS,
+      type: REQUEST_DETAILS_SUCCESS,
       payload: data,
     })
   } catch (error) {
@@ -96,17 +96,17 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       dispatch(logout())
     }
     dispatch({
-      type: ORDER_DETAILS_FAIL,
+      type: REQUEST_DETAILS_FAIL,
       payload: message,
     })
   }
 }
 
-export const payOrder =
-  (orderId, paymentResult) => async (dispatch, getState) => {
+export const payRequest =
+  (requestId, paymentResult) => async (dispatch, getState) => {
     try {
       dispatch({
-        type: ORDER_PAY_REQUEST,
+        type: REQUEST_PAY_REQUEST,
       })
 
       const {
@@ -121,13 +121,13 @@ export const payOrder =
       }
 
       const { data } = await axios.put(
-        `/api/orders/${orderId}/pay`,
+        `/api/requests/${requestId}/pay`,
         paymentResult,
         config
       )
 
       dispatch({
-        type: ORDER_PAY_SUCCESS,
+        type: REQUEST_PAY_SUCCESS,
         payload: data,
       })
     } catch (error) {
@@ -139,21 +139,21 @@ export const payOrder =
         dispatch(logout())
       }
       dispatch({
-        type: ORDER_PAY_FAIL,
+        type: REQUEST_PAY_FAIL,
         payload: message,
       })
     }
   }
-export const payOrderAdmin = (orderId) => async (dispatch, getState) => {
+export const payRequestAdmin = (requestId) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: ORDER_PAY_REQUEST,
+      type: REQUEST_PAY_REQUEST,
     })
 
-    const { data } = await axios.put(`/api/orders/${orderId}/pay`)
+    const { data } = await axios.put(`/api/requests/${requestId}/pay`)
 
     dispatch({
-      type: ORDER_PAY_SUCCESS,
+      type: REQUEST_PAY_SUCCESS,
       payload: data,
     })
   } catch (error) {
@@ -165,16 +165,16 @@ export const payOrderAdmin = (orderId) => async (dispatch, getState) => {
       dispatch(logout())
     }
     dispatch({
-      type: ORDER_PAY_FAIL,
+      type: REQUEST_PAY_FAIL,
       payload: message,
     })
   }
 }
 
-export const deliverOrder = (order) => async (dispatch, getState) => {
+export const deliverRequest = (request) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: ORDER_DELIVER_REQUEST,
+      type: REQUEST_DELIVER_REQUEST,
     })
 
     const {
@@ -188,13 +188,13 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `/api/orders/${order._id}/deliver`,
+      `/api/requests/${request._id}/deliver`,
       {},
       config
     )
 
     dispatch({
-      type: ORDER_DELIVER_SUCCESS,
+      type: REQUEST_DELIVER_SUCCESS,
       payload: data,
     })
   } catch (error) {
@@ -206,16 +206,16 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
       dispatch(logout())
     }
     dispatch({
-      type: ORDER_DELIVER_FAIL,
+      type: REQUEST_DELIVER_FAIL,
       payload: message,
     })
   }
 }
 
-export const listMyOrders = () => async (dispatch, getState) => {
+export const listMyRequests = () => async (dispatch, getState) => {
   try {
     dispatch({
-      type: ORDER_LIST_MY_REQUEST,
+      type: REQUEST_LIST_MY_REQUEST,
     })
 
     const {
@@ -228,10 +228,10 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/orders/myorders`, config)
+    const { data } = await axios.get(`/api/requests/myrequests`, config)
 
     dispatch({
-      type: ORDER_LIST_MY_SUCCESS,
+      type: REQUEST_LIST_MY_SUCCESS,
       payload: data,
     })
   } catch (error) {
@@ -243,16 +243,16 @@ export const listMyOrders = () => async (dispatch, getState) => {
       dispatch(logout())
     }
     dispatch({
-      type: ORDER_LIST_MY_FAIL,
+      type: REQUEST_LIST_MY_FAIL,
       payload: message,
     })
   }
 }
 
-export const listOrders = () => async (dispatch, getState) => {
+export const listRequests = () => async (dispatch, getState) => {
   try {
     dispatch({
-      type: ORDER_LIST_REQUEST,
+      type: REQUEST_LIST_REQUEST,
     })
 
     const {
@@ -265,10 +265,10 @@ export const listOrders = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/orders`, config)
+    const { data } = await axios.get(`/api/requests`, config)
 
     dispatch({
-      type: ORDER_LIST_SUCCESS,
+      type: REQUEST_LIST_SUCCESS,
       payload: data,
     })
   } catch (error) {
@@ -280,7 +280,7 @@ export const listOrders = () => async (dispatch, getState) => {
       dispatch(logout())
     }
     dispatch({
-      type: ORDER_LIST_FAIL,
+      type: REQUEST_LIST_FAIL,
       payload: message,
     })
   }

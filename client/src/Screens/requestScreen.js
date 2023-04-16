@@ -1,17 +1,17 @@
 import React from 'react'
 import { Fade } from 'react-bootstrap'
 import Meta from '../Components/Meta'
-import Order from '../Components/Order'
+import Request from '../Components/Request'
 
-const OrderScreen = () => {
+const RequestScreen = () => {
   return (
     <div className='background_pattern'>
-      <Meta title='Order' />
+      <Meta title='Request' />
       <Fade up>
-        <Order />
+        <Request />
       </Fade>
     </div>
   )
 }
 
-export default OrderScreen
+export default RequestScreen

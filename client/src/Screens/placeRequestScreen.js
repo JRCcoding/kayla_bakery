@@ -1,17 +1,17 @@
 import React from 'react'
 import { Fade } from 'react-reveal'
-import PlaceOrder from '../Components/PlaceOrder'
+import PlaceRequest from '../Components/PlaceRequest'
 import Meta from '../Components/Meta'
 
-const PlaceOrderScreen = () => {
+const PlaceRequestScreen = () => {
   return (
     <div className='background_pattern'>
-      <Meta title='Place Order' />
+      <Meta title='Place Request' />
       <Fade up>
-        <PlaceOrder />
+        <PlaceRequest />
       </Fade>
     </div>
   )
 }
 
-export default PlaceOrderScreen
+export default PlaceRequestScreen
