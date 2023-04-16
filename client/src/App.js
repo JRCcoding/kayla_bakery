@@ -16,6 +16,8 @@ import AboutScreen from './Screens/aboutScreen'
 import Navi from './Components/Navi'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Footer from './Components/Footer'
+import CakeScreen from './Screens/cakeScreen'
+import CupcakeScreen from './Screens/cupcakeScreen'
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
       <Router>
         <Navi />
         <Route path='/' exact component={HomeScreen} />
+        <Route path='/cakes' component={CakeScreen} />
+        <Route path='/cupcakes' component={CupcakeScreen} />
         <Route path='/cart/:id?' component={CartScreen} />
         <Route path='/shipping' component={ShippingScreen} />
         <Route path='/payment' component={PaymentScreen} />

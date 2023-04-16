@@ -2,7 +2,6 @@
     font-size: 1.3rem;
     padding: 5%;
 }
-
 @media only screen and (max-width: 900px) {
     .about_p {
         margin-bottom: 15%;
