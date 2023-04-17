@@ -122,7 +122,7 @@ export default function App() {
     // </Navbar>
     <>
       {' '}
-      {['lg'].map((expand) => (
+      {[false].map((expand) => (
         <Navbar key={expand} bg='#9300d4' expand={expand} className='navbar'>
           <LinkContainer to='/'>
             <Navbar.Brand className='d-inline navtitle font-WindSong text-white'>
@@ -152,28 +152,6 @@ export default function App() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className='justify-content-end flex-grow-1 pe-3'>
-                {userInfo ? (
-                  <NavDropdown
-                    title={userInfo.name}
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                  >
-                    {userInfo.isAdmin === true && (
-                      <>
-                        <NavDropdown.Item href='/admin/requestlist'>
-                          Requests
-                        </NavDropdown.Item>
-                        <NavDropdown.Divider />
-                      </>
-                    )}
-                    <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
-                    <NavDropdown.Item onClick={logoutHandler}>
-                      Logout
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                ) : (
-                  <></>
-                )}
-
                 <Nav.Link href='/'>
                   <span className='navlink'>Home</span>
                 </Nav.Link>
@@ -192,6 +170,33 @@ export default function App() {
                 <Nav.Link href='/cupcakes'>
                   <span className='navlink'>Cupcakes</span>
                 </Nav.Link>
+                {userInfo ? (
+                  <NavDropdown
+                    title={userInfo.name}
+                    // id={`offcanvasNavbarDropdown-expand-${expand}`}
+                    className='navlink'
+                  >
+                    {userInfo.isAdmin === true && (
+                      <>
+                        <NavDropdown.Item href='/admin/requestlist'>
+                          Requests
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                      </>
+                    )}
+                    <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                ) : (
+                  <>
+                    <NavDropdown.Divider />
+                    <Nav.Link href='/login'>
+                      <span className='navlink'>Login</span>
+                    </Nav.Link>
+                  </>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

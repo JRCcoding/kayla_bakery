@@ -37,7 +37,7 @@ const RegisterScreen = ({ location, history }) => {
   }
 
   return (
-    <div className='background_pattern'>
+    <div className='background_pattern' style={{ height: '100vh' }}>
       <Container>
         <Card>
           <FormContainer>
