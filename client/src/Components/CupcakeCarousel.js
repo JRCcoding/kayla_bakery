@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Container, Carousel, Image } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from './Loader'
-import Message from '../Components/Message'
+import Message from './Message'
 import { listProducts } from '../Actions/requestActions'
 import '../Styles/Carousel.css'
 import { LinkContainer } from 'react-router-bootstrap'
 import axios from 'axios'
 
-const CakeCarousel = () => {
+const CupcakeCarousel = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
   const dispatch = useDispatch()
@@ -33,9 +33,9 @@ const CakeCarousel = () => {
     <Container>
       <Carousel controls={false} className='request_carousel'>
         {requests &&
-          requests.slice(0, 13).map((request) => (
+          requests.slice(13, 20).map((request) => (
             <Carousel.Item key={request}>
-              {request && request.category !== 'cupcake' && (
+              {request && request.category !== 'cake' && (
                 <>
                   <Image
                     src={request.img}
@@ -58,4 +58,4 @@ const CakeCarousel = () => {
   )
 }
 
-export default CakeCarousel
+export default CupcakeCarousel

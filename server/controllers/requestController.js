@@ -6,29 +6,47 @@ import Request from '../models/requestModel.js'
 // @access  Private
 const addRequestItems = asyncHandler(async (req, res) => {
   const {
-    requestItems,
-    shippingAddress,
-    paymentMethod,
-    itemsPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
+    // requestItems,
+    // shippingAddress,
+    // paymentMethod,
+    // itemsPrice,
+    // taxPrice,
+    // shippingPrice,
+    // totalPrice,
+    formType,
+    size,
+    flavor,
+    qty,
+    date,
+    additional,
+    name,
+    email,
+    number,
   } = req.body
 
-  if (requestItems && requestItems.length === 0) {
+  if (!size) {
     res.status(400)
     throw new Error('No request items')
     return
   } else {
     const request = new Request({
-      requestItems,
-      user: req.user._id,
-      shippingAddress,
-      paymentMethod,
-      itemsPrice,
-      taxPrice,
-      shippingPrice,
-      totalPrice,
+      // requestItems,
+      // user: req.user._id,
+      // shippingAddress,
+      // paymentMethod,
+      // itemsPrice,
+      // taxPrice,
+      // shippingPrice,
+      // totalPrice,
+      formType,
+      size,
+      flavor,
+      qty,
+      date,
+      additional,
+      name,
+      email,
+      number,
     })
 
     const createdRequest = await request.save()

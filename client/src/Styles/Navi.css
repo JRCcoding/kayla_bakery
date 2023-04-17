@@ -8,11 +8,16 @@
 
 
 .navtitle{ 
-  scale: 1.8;
+  scale: 2.5;
   margin: 4%;
   padding-left: 25%;
   text-shadow: 3px 3px 5px  rgba(10, 0, 10, .7);
   transition: all 1s;
+}
+@media only screen and (max-width: 1000px){
+  .navtitle{
+    scale: 1.8;
+  }
 }
 .navtitle:hover {
   cursor: pointer;
@@ -38,7 +43,8 @@
 
 }
 .toggler {
-  filter: invert(1);
+  scale: 250%;
+  border: 0;
 }
 
 
@@ -47,7 +53,7 @@
 
 @media only screen and (min-width: 600px) {
   .navlink {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   .navtitle{
     font-size: 2.9rem;

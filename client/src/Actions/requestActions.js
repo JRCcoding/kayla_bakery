@@ -23,46 +23,61 @@ import {
 import { logout } from './userActions'
 
 export const createRequest = (request) => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: REQUEST_CREATE_REQUEST,
-    })
+  const {
+    userLogin: { userInfo },
+  } = getState()
 
-    const {
-      userLogin: { userInfo },
-    } = getState()
-
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
-
-    const { data } = await axios.post(`/api/requests`, request, config)
-
-    dispatch({
-      type: REQUEST_CREATE_SUCCESS,
-      payload: data,
-    })
-    dispatch({
-      type: CART_CLEAR_ITEMS,
-      payload: data,
-    })
-    localStorage.removeItem('cartItems')
-  } catch (error) {
-    const message =
-      error.response && error.response.data.message
-        ? error.response.data.message
-        : error.message
-    if (message === 'Not authorized, token failed') {
-      dispatch(logout())
-    }
-    dispatch({
-      type: REQUEST_CREATE_FAIL,
-      payload: message,
-    })
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${userInfo.token}`,
+    },
   }
+  await axios.post('/api/requests', request, config)
+  dispatch({
+    type: REQUEST_CREATE_REQUEST,
+    payload: request,
+  })
+  // try {
+  //   dispatch({
+  //     type: REQUEST_CREATE_REQUEST,
+  //   })
+
+  //   const {
+  //     userLogin: { userInfo },
+  //   } = getState()
+
+  //   const config = {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Authorization: `Bearer ${userInfo.token}`,
+  //     },
+  //   }
+
+  //   const { data } = await axios.post(`/api/requests`, request, config)
+
+  //   dispatch({
+  //     type: REQUEST_CREATE_SUCCESS,
+  //     payload: data,
+  //   })
+  //   dispatch({
+  //     type: CART_CLEAR_ITEMS,
+  //     payload: data,
+  //   })
+  //   localStorage.removeItem('cartItems')
+  // } catch (error) {
+  //   const message =
+  //     error.response && error.response.data.message
+  //       ? error.response.data.message
+  //       : error.message
+  //   if (message === 'Not authorized, token failed') {
+  //     dispatch(logout())
+  //   }
+  //   dispatch({
+  //     type: REQUEST_CREATE_FAIL,
+  //     payload: message,
+  //   })
+  // }
 }
 
 export const getRequestDetails = (id) => async (dispatch, getState) => {

@@ -1,7 +1,8 @@
 .product_carousel {
-  margin-bottom: 25%;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-bottom: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
 }
 
 .product_carousel_image {
@@ -23,9 +24,6 @@
   }
   .product_carousel_caption {
     scale: 140%;
-  }
-  .product_carousel_image {
-    width: 90%;
   }
 }
 

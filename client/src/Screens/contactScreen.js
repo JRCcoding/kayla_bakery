@@ -19,7 +19,7 @@ const contactScreen = () => {
       <Fade>
         <Contact />
         {/* <div className='map_box'><GoogleMaps /></div> */}
-        <MDBCard className='contact_info_box'>
+        {/* <MDBCard className='contact_info_box'>
           <MDBCardTitle>
             There are plenty of other ways to contact me:
           </MDBCardTitle>
@@ -57,7 +57,7 @@ const contactScreen = () => {
               </MDBCardLink>
             </ul>
           </MDBCardText>
-        </MDBCard>
+        </MDBCard> */}
       </Fade>
     </div>
   )

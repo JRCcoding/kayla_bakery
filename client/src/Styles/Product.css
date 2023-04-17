@@ -63,5 +63,9 @@
     .backprod_button {
         display: none;
     }
+    .product_carousel {
+        width: 250px;
 }
+}
+
 

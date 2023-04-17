@@ -10,7 +10,6 @@ import LoginScreen from './Screens/loginScreen'
 import RegisterScreen from './Screens/registerScreen'
 import ProfileScreen from './Screens/profileScreen'
 import ProductsScreen from './Screens/productsScreen'
-import ProductScreen from './Screens/productScreen'
 import ContactScreen from './Screens/contactScreen'
 import AboutScreen from './Screens/aboutScreen'
 import Navi from './Components/Navi'
@@ -18,6 +17,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Footer from './Components/Footer'
 import CakeScreen from './Screens/cakeScreen'
 import CupcakeScreen from './Screens/cupcakeScreen'
+import ThankyouScreen from './Screens/thankyouScreen'
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
         <Route path='/' exact component={HomeScreen} />
         <Route path='/cakes' component={CakeScreen} />
         <Route path='/cupcakes' component={CupcakeScreen} />
+        <Route path='/thankyou' component={ThankyouScreen} />
         <Route path='/cart/:id?' component={CartScreen} />
         <Route path='/shipping' component={ShippingScreen} />
         <Route path='/payment' component={PaymentScreen} />
@@ -37,10 +38,9 @@ function App() {
         <Route path='/register' component={RegisterScreen} />
         <Route path='/profile' component={ProfileScreen} />
         <Route path='/products' component={ProductsScreen} />
-        <Route path='/product/:id' component={ProductScreen} />
         <Route path='/about' component={AboutScreen} />
         <Route path='/contact' component={ContactScreen} />
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </>
   )

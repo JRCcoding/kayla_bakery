@@ -1,6 +1,6 @@
 import '../index.css'
 import '../App.css'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import '../Styles/Navi.css'
@@ -26,34 +26,40 @@ export default function App() {
   const logoutHandler = () => {
     dispatch(logout())
   }
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Navbar
       className='bg-Navbar text-white font-Lato'
       expand='xl'
       collapseOnSelect
+      fixed='top'
     >
       <Container>
         <LinkContainer to='/'>
           <Navbar.Brand>
             <h6
               className='d-inline navtitle font-WindSong text-Navtitle'
-              style={{ zIndex: '9999' }}
+              style={{ zIndex: '9999', marginTop: '10%', marginBottom: '0' }}
             >
               Kaylala Kakes
             </h6>
           </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle
-          aria-controls='navbarSupportedContent'
-          aria-expanded='false'
+          aria-controls='responsive-navbar-nav'
+          // aria-expanded='false'
           aria-label='Toggle navigation'
           onClick={() => setShowBasic(!showBasic)}
-          className='toggler ms-5'
+          className='toggler'
         >
-          <MDBIcon className='burger' fas icon='birthday-cake' />{' '}
+          🍰
+          {/* 🧁 */}
+          {/* <MDBIcon className='burger' fas icon='birthday-cake' />{' '} */}
+          {/* &#127874; */}
         </Navbar.Toggle>
-        <Navbar.Collapse id='basic-navbar-nav'>
+        <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='ml-auto'>
             {userInfo ? (
               <MDBDropdown id='username' className='navlink user_nav'>
@@ -82,23 +88,11 @@ export default function App() {
               </LinkContainer>
             )}
             {userInfo && userInfo.isAdmin && (
-              // <NavDropdown title='Admin' id='adminmenu' className='navlink'>
-              //   <LinkContainer to='/admin/userlist'>
-              //     <MDBDropdownItem>Users</MDBDropdownItem>
-              //   </LinkContainer>
-              //   <LinkContainer to='/admin/productlist'>
-              //     <MDBDropdownItem>Products</MDBDropdownItem>
-              //   </LinkContainer>
               <LinkContainer to='/admin/requestlist'>
                 <MDBNavbarItem className='navlink'>Requests</MDBNavbarItem>
               </LinkContainer>
-              // </NavDropdown>
             )}
-            {/* <LinkContainer to='/cart'>
-              <MDBNavbarItem link className='navlink'>
-                <i className='fas fa-shopping-cart'></i> Cart
-              </MDBNavbarItem>
-            </LinkContainer> */}
+
             <LinkContainer to='/products'>
               <MDBNavbarItem link className='navlink clickable'>
                 Products
