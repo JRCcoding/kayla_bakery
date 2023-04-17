@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../Components/Loader'
 import Meta from '../Components/Meta'
 import { login } from '../Actions/userActions'
-import FormContainer from '../Components/FormContainer'
 
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
@@ -33,44 +32,42 @@ const LoginScreen = ({ location, history }) => {
     <div className='background_pattern' style={{ height: '100vh' }}>
       <Meta title='Login' />
       <Container>
-        <Card>
-          <FormContainer>
-            <h1>Sign In</h1>
-            <Form onSubmit={submitHandler}>
-              <Form.Group controlId='email'>
-                <Form.Label>Email Address</Form.Label>
-                <Form.Control
-                  type='email'
-                  placeholder='Enter email'
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
+        <Card style={{ width: '60%' }} className='mx-auto px-5'>
+          <h1>Sign In</h1>
+          <Form onSubmit={submitHandler}>
+            <Form.Group controlId='email'>
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control
+                type='email'
+                placeholder='Enter email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
 
-              <Form.Group controlId='password'>
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type='password'
-                  placeholder='Enter password'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
+            <Form.Group controlId='password'>
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type='password'
+                placeholder='Enter password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
 
-              <Button type='submit' variant='primary'>
-                Sign In
-              </Button>
-            </Form>
+            <Button type='submit' variant='primary'>
+              Sign In
+            </Button>
+          </Form>
 
-            <Row className='py-3'>
-              <Col>
-                New Customer?{' '}
-                <LinkContainer to='/register'>
-                  <strong className='clickable'>Register</strong>
-                </LinkContainer>
-              </Col>
-            </Row>
-          </FormContainer>
+          <Row className='py-3'>
+            <Col>
+              New Customer?{' '}
+              <LinkContainer to='/register'>
+                <strong className='clickable'>Register</strong>
+              </LinkContainer>
+            </Col>
+          </Row>
         </Card>
       </Container>
     </div>

@@ -14,7 +14,7 @@ import Meta from '../Components/Meta'
 
 const contactScreen = () => {
   return (
-    <div className='background_pattern'>
+    <div className='background_pattern' style={{ height: '100vh' }}>
       <Meta title='Contact Kayla' />
       <Fade>
         <Contact />

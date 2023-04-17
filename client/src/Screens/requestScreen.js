@@ -113,7 +113,8 @@ const RequestScreen = ({ match, history }) => {
             <Col md={8}>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
-                  <h2>Customer Info</h2>
+                  <h2>Contact Info</h2>
+                  <br />
                   <p>
                     <strong>Name: </strong>
                     {request.name}
@@ -147,18 +148,16 @@ const RequestScreen = ({ match, history }) => {
                     <Message variant='danger'>Not Paid</Message>
                   )}
                 </ListGroup.Item>
-
-                <ListGroup.Item>
-                  <h2>Request Type:</h2>
-                  &nbsp;{request.formType}
-                </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={4}>
               <Card>
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
-                    <h2>Request Summary</h2>
+                    <Row>
+                      <Col>Type:</Col>
+                      <Col>{request.formType}</Col>
+                    </Row>
                   </ListGroup.Item>
                   {request.formType === 'Cupcakes' ? (
                     <></>
@@ -175,6 +174,12 @@ const RequestScreen = ({ match, history }) => {
                     <Row>
                       <Col>Date:</Col>
                       <Col>{request.date}</Col>
+                    </Row>
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Quantity:</Col>
+                      <Col>{request.qty}</Col>
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>
