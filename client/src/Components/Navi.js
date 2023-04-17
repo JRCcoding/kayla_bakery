@@ -140,11 +140,14 @@ export default function App() {
             id={`offcanvasNavbar-expand-${expand}`}
             aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
             placement='end'
-            style={{ backgroundColor: '#9300d4', color: 'white' }}
+            style={{ backgroundColor: '#bb1bff', color: 'white' }}
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                Kaylala Kakes
+              <Offcanvas.Title
+                id={`offcanvasNavbarLabel-expand-${expand}`}
+                className='font-Pacifico'
+              >
+                <h1>Kaylala Kakes</h1>
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
@@ -172,13 +175,22 @@ export default function App() {
                 )}
 
                 <Nav.Link href='/'>
-                  <strong className='navlink'>Home</strong>
-                </Nav.Link>
-                <Nav.Link href='/products'>
-                  <strong className='navlink'>Products</strong>
+                  <span className='navlink'>Home</span>
                 </Nav.Link>
                 <Nav.Link href='/contact'>
-                  <strong className='navlink'>Contact</strong>
+                  <span className='navlink'>Contact</span>
+                </Nav.Link>
+                <NavDropdown.Divider />
+                <Nav.Link disabled>
+                  <strong>
+                    <h2>Forms:</h2>
+                  </strong>
+                </Nav.Link>
+                <Nav.Link href='/cakes'>
+                  <span className='navlink'>Cakes</span>
+                </Nav.Link>
+                <Nav.Link href='/cupcakes'>
+                  <span className='navlink'>Cupcakes</span>
                 </Nav.Link>
               </Nav>
             </Offcanvas.Body>
