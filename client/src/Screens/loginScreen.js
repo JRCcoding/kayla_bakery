@@ -30,7 +30,7 @@ const LoginScreen = ({ location, history }) => {
   }
 
   return (
-    <div className='background_pattern'>
+    <div className='background_pattern' style={{ height: '100vh' }}>
       <Meta title='Login' />
       <Container>
         <Card>

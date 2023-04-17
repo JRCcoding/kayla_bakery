@@ -17,13 +17,13 @@ const CakeCarousel = () => {
   const [requests, setRequests] = useState()
   useEffect(() => {
     const fetchRequests = async () => {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      }
-      const { data } = await axios.get('/api/products', config)
+      // const config = {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     Authorization: `Bearer ${userInfo.token}`,
+      //   },
+      // }
+      const { data } = await axios.get('/api/products')
       setRequests(data)
     }
     fetchRequests()

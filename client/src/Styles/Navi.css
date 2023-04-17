@@ -14,7 +14,7 @@
 .navtitle{ 
   scale: 2.5;
   margin: 4%;
-  padding-left: 5%;
+  padding-left: 7.5%;
   text-shadow: 3px 3px 5px  rgba(10, 0, 10, .7);
   transition: all 1s;
 }
@@ -31,7 +31,7 @@
   cursor: pointer;
 }
 .navlinks {
-  justify-content: end;
+  justify-content: start;
   margin-right: 3%;
 }
 
@@ -52,8 +52,7 @@
 }
 .toggler {
   scale: 150%;
-  padding-right: 5%;
-  border: 0;
+  padding-right: 20%;
 }
 
 
@@ -61,11 +60,19 @@
 
 
 @media only screen and (min-width: 600px) {
+  .navbar {
+    height: 90px;
+  }
   .navlink {
     font-size: 1.5rem;
   }
   .navtitle{
     font-size: 2.9rem;
+    margin-top: 1%;
+  }
+  .toggler {
+    margin-right: 7.5%;
+    margin-top: -3%;
   }
 }
 
@@ -77,9 +84,6 @@
 .navtitle {
     font-size: 1.46rem;
     margin: 7% -10% 7% 0%;
-}
-.toggler {
-  margin-right: 3%;
 }
 .logo {
   display: none;
