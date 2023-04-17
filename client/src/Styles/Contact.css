@@ -1,7 +1,7 @@
 .contact_container {
     /* padding-bottom: 5%; */
     padding-top: 10%;
-    width: 50%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -13,7 +13,7 @@
 .contact_card {
     margin: 0 auto 0 auto;
     box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.5);
-    width: 50%;
+    width: 75%;
 }
 
 
@@ -25,7 +25,6 @@
     box-shadow: 3px 3px 5px rgba(0,0,0, 0.5);
     background-color: #593c60;
     color: white;
-    width: 200px;
     transition: all 1.2s;
 }
 
@@ -94,7 +93,7 @@
 }
 @media only screen and (min-width: 500px) {
     .contact_container {
-        width: 75%;
+        width: 50%;
     }
     .contact_title {
         margin-bottom: 5%;
