@@ -10,10 +10,10 @@ html, body {
   background-repeat:repeat;
   background-size: 200px; 
   height: 100%;
-  padding-top: 150px;
+  padding-top: 100px;
 }
-@media only screen and (max-width: 400px) {
-  .background.pattern {
+@media only screen and (max-width: 500px) {
+  .background_pattern {
     padding-top: 30px;
   }
 }

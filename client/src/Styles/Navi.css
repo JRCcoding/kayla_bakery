@@ -5,18 +5,26 @@
 .clickable:hover {
   cursor: pointer;
 }
+.navbar {
+  background-color: #9300d4;
+  height: 80px;
+}
 
 
 .navtitle{ 
   scale: 2.5;
   margin: 4%;
-  padding-left: 25%;
+  padding-left: 5%;
   text-shadow: 3px 3px 5px  rgba(10, 0, 10, .7);
   transition: all 1s;
 }
 @media only screen and (max-width: 1000px){
+  .navbar {
+    height: 115px;
+  }
   .navtitle{
-    scale: 1.8;
+    scale: 1.7;
+    padding-left: 12%;
   }
 }
 .navtitle:hover {
@@ -31,19 +39,21 @@
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 800;
-  margin-left: 25px;
+  margin-right: 30px;
   text-align: right;
   transition: all 1s;
+  color: white;
 }
   
 .navlink:hover {
   cursor: pointer;
   text-shadow: 3px 3px 5px  rgba(10, 0, 10, .7);
-  color: #a1a1a1;
+  color: #dad7d7;
 
 }
 .toggler {
-  scale: 250%;
+  scale: 150%;
+  padding-right: 5%;
   border: 0;
 }
 
@@ -70,7 +80,7 @@
     margin: 7% -10% 7% 0%;
 }
 .toggler {
-  margin: 0;
+  margin-right: 3%;
 }
 .logo {
   display: none;
