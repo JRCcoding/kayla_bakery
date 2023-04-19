@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import '../Styles/Navi.css'
+import { BsPersonCircle } from 'react-icons/bs'
+import { GiCupcake, GiStairsCake } from 'react-icons/gi'
 
 import {
   MDBDropdown,
@@ -165,15 +167,23 @@ export default function App() {
                   </strong>
                 </Nav.Link>
                 <Nav.Link href='/cakes'>
-                  <span className='navlink'>Cakes</span>
+                  <span className='navlink'>
+                    <GiStairsCake className='inline' />
+                    &nbsp; Cakes
+                  </span>
                 </Nav.Link>
                 <Nav.Link href='/cupcakes'>
-                  <span className='navlink'>Cupcakes</span>
+                  <span className='navlink'>
+                    <GiCupcake className='inline' />
+                    &nbsp; Cupcakes
+                  </span>
                 </Nav.Link>
-                {userInfo ? (
+              </Nav>
+              {userInfo ? (
+                <>
+                  <NavDropdown.Divider />
                   <NavDropdown
-                    title={userInfo.name}
-                    // id={`offcanvasNavbarDropdown-expand-${expand}`}
+                    title={<BsPersonCircle className=' inline ' />}
                     className='navlink'
                   >
                     {userInfo.isAdmin === true && (
@@ -189,15 +199,17 @@ export default function App() {
                       Logout
                     </NavDropdown.Item>
                   </NavDropdown>
-                ) : (
-                  <>
-                    <NavDropdown.Divider />
-                    <Nav.Link href='/login'>
-                      <span className='navlink'>Login</span>
-                    </Nav.Link>
-                  </>
-                )}
-              </Nav>
+                </>
+              ) : (
+                <>
+                  <Nav.Link href='/login'>
+                    <span className='navlink inline'>
+                      <BsPersonCircle className=' inline' />
+                      &nbsp;Login
+                    </span>
+                  </Nav.Link>
+                </>
+              )}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Navbar>

@@ -158,7 +158,15 @@ const CakeScreen = ({ history }) => {
                           />
                         </FloatingLabel>
                       </ListGroupItem>
-
+                      <p className='text-1xl py-5'>
+                        <strong className='text-2xl font-Pacifico'>
+                          Note:
+                        </strong>{' '}
+                        Prices may change due to any additional toppers such as
+                        fondant or chocolate decorations. Also, prices may
+                        change for cakes depending on how many layers are
+                        requested.
+                      </p>
                       <button
                         type='submit'
                         className='btn btn-primary btn-block'

@@ -12,12 +12,12 @@ const HomeScreen = () => {
       <Meta title='Kaylala Kakes' />
       <ProductCarousel />
       {/* <ValentineCarousel /> */}
-      <Card className=' my-20 py-8 mx-auto px-4 w-75'>
+      <Card className=' mb-20 py-8 mx-auto px-4 w-50'>
         <Col sm={8} className='text-center self-center'>
           <p className='text-2xl '>
             Hi, I’m{' '}
             <strong className='font-Pacifico'>
-              <h3 className='inline'>Kayla Mikel</h3>
+              <span className='inline text-2xl'>Kayla Mikel</span>
             </strong>{' '}
             and I’m a home baker located in Katy, T.X.
             <br />

@@ -73,15 +73,15 @@ const CupcakeScreen = ({ history }) => {
                 <ListGroup>
                   <ListGroup.Item>
                     <Form onSubmit={submitHandler}>
-                      <FloatingLabel label='Quantity:'>
+                      <FloatingLabel label='Quantity: (Starting Price)'>
                         <Form.Control
                           as='select'
                           value={qty}
                           onChange={(e) => setQty(e.target.value)}
                         >
-                          <option value='12'>Dozen</option>
-                          <option value='24'>2 Dozen</option>
-                          <option value='1'>Single Cupcake</option>
+                          <option value='12'>Dozen ($33)</option>
+                          <option value='24'>2 Dozen ($66)</option>
+                          <option value='1'>Single Cupcake ($2.75)</option>
                         </Form.Control>
                       </FloatingLabel>
                       <FloatingLabel label='Date:'>
@@ -133,6 +133,15 @@ const CupcakeScreen = ({ history }) => {
                           />
                         </FloatingLabel>
                       </ListGroupItem>
+                      <p className='text-1xl py-5'>
+                        <strong className='text-2xl font-Pacifico'>
+                          Note:
+                        </strong>{' '}
+                        Prices may change due to any additional toppers such as
+                        fondant or chocolate decorations. Also, prices may
+                        change for cakes depending on how many layers are
+                        requested.
+                      </p>
                       <button
                         type='submit'
                         className='btn btn-primary btn-block'
