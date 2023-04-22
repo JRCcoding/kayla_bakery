@@ -34,7 +34,7 @@ const CakeCarousel = () => {
       <Carousel controls={false} className='request_carousel'>
         {requests &&
           requests.slice(0, 13).map((request) => (
-            <Carousel.Item key={request}>
+            <Carousel.Item key={request.title}>
               {request && request.category !== 'cupcake' && (
                 <>
                   <Image

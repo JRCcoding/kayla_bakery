@@ -30,16 +30,16 @@
 .navtitle:hover {
   cursor: pointer;
 }
-.navlinks {
+/* .navlinks {
   justify-content: start;
   margin-right: 3%;
-}
+} */
 
 .navlink {
   text-decoration: none;
   font-size: 1.5rem;
   margin-right: 30px;
-  text-align: right;
+  text-align: left;
   transition: all 1s;
   color: white;
 }
@@ -52,7 +52,7 @@
 }
 .toggler {
   scale: 150%;
-  padding-right: 20%;
+  margin-right: 5%;
 }
 
 
@@ -87,8 +87,5 @@
 }
 .logo {
   display: none;
-}
-.navlinks {
-  margin-right: 0;
 }
 }

@@ -10,11 +10,6 @@
     margin-top: -5%;
 }
 
-.contact_card {
-    margin: 0 auto 0 auto;
-    box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.5);
-    width: 75%;
-}
 
 
 
@@ -114,11 +109,5 @@
     }
     .contact_title {
         top: -40px;
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    .contact_card {
-        width: 80%;
     }
 }

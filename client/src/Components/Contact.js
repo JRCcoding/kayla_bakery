@@ -29,10 +29,7 @@ const Contact = () => {
   //   return <ThankYou className='thank_you_card' />
   // }
   return (
-    <Card
-      className=' px-0 py-3 center'
-      style={{ width: '50%', marginLeft: 'auto', marginRight: 'auto' }}
-    >
+    <Card className=' px-0 py-3 center contact_card'>
       <h2 className='contact_title mx-auto'>Contact me!</h2>
       {!isSubmitted ? (
         <Card.Body>
