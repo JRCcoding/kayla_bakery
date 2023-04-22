@@ -9,7 +9,7 @@ const ProductCarousel = () => {
   return (
     <Carousel
       controls={false}
-      className='product_carousel w-100 '
+      className='product_carousel '
       style={{ marginTop: '30px' }}
     >
       <Carousel.Item>
