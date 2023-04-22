@@ -7,9 +7,13 @@ import cupcake from '../Images/cupcakes_redpink.webp'
 
 const ProductCarousel = () => {
   return (
-    <Carousel controls={false} className='product_carousel'>
+    <Carousel
+      controls={false}
+      className='product_carousel w-100 '
+      style={{ marginTop: '30px' }}
+    >
       <Carousel.Item>
-        <LinkContainer to={`/cakes`}>
+        <LinkContainer to={`/products`}>
           <Image
             src={cake}
             alt='Kaylala Kakes'
@@ -23,7 +27,7 @@ const ProductCarousel = () => {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <LinkContainer to={`/cupcakes`}>
+        <LinkContainer to={`/products`}>
           <Image
             src={cupcake}
             alt='Kaylala cupKakes'

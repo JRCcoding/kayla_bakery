@@ -12,7 +12,7 @@ const HomeScreen = () => {
       <Meta title='Kaylala Kakes' />
       <ProductCarousel />
       {/* <ValentineCarousel /> */}
-      <Card className=' mb-20 py-8 mx-auto px-4 w-50'>
+      <Card className=' mb-20 py-8 mx-auto px-4 about_card'>
         <Col sm={8} className='text-center self-center'>
           <p className='text-2xl '>
             Hi, I’m{' '}

@@ -6,11 +6,12 @@ html, body {
 }
 
 .background_pattern {
-  background-image: url(./Images/webp/lncbgpattern.webp), linear-gradient(to bottom, rgb(159, 38, 192), rgb(212, 119, 238), rgb(235, 167, 253));
+  /* background-image: url(./Images/webp/lncbgpattern.webp), linear-gradient(to bottom, rgb(159, 38, 192), rgb(212, 119, 238), rgb(235, 167, 253)); */
+  background-image: linear-gradient(to bottom, rgb(159, 38, 192), rgb(212, 119, 238), rgb(235, 167, 253));
   background-repeat:repeat;
   background-size: 200px; 
   height: 100%;
-  padding-top: 100px;
+  margin-top: 90px;
 }
 @media only screen and (max-width: 500px) {
   .background_pattern {
@@ -28,7 +29,24 @@ html, body {
   height: 100%;
 }
 
+.about_card {
+  width: 100%;  
+  box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.5);
 
+}
+.contact_card {
+  box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.5);
+  width: 100%;
+}
+
+@media only screen and (min-width: 550px) {
+  .about_card {
+      width: 50%;
+  }
+  .contact_card {
+    width: 50%;
+  }
+}
 
 .spinner {
   padding-bottom: 100vh;

@@ -125,7 +125,13 @@ export default function App() {
     <>
       {' '}
       {[false].map((expand) => (
-        <Navbar key={expand} bg='#9300d4' expand={expand} className='navbar'>
+        <Navbar
+          key={expand}
+          bg='#9300d4'
+          expand={expand}
+          className='navbar'
+          fixed='top'
+        >
           <LinkContainer to='/'>
             <Navbar.Brand className='d-inline navtitle font-WindSong text-white'>
               Kaylala Kakes

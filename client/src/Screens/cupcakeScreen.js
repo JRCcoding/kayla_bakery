@@ -1,6 +1,7 @@
 import { MDBCard } from 'mdb-react-ui-kit'
 import React, { useState } from 'react'
 import {
+  Button,
   Col,
   Container,
   FloatingLabel,
@@ -51,12 +52,13 @@ const CupcakeScreen = ({ history }) => {
       <Container>
         <MDBCard className='prod_info_box'>
           <Row>
+            <LinkContainer to='/products'>
+              <div className='ml-20'>
+                {' '}
+                <Button className='backprod_button'>VIEW ALL PRODUCTS</Button>
+              </div>
+            </LinkContainer>
             <Col md={8} lg={5} className='mx-auto'>
-              <LinkContainer to='/products'>
-                <button className='backprod_button absolute top-0 text-white'>
-                  GO BACK
-                </button>
-              </LinkContainer>
               {/* <Image
                 fluid
                 style={{ height: 'auto', width: '500px' }}
