@@ -35,7 +35,7 @@ const CupcakeCarousel = () => {
         {requests &&
           requests.slice(13, 20).map((request) => (
             <Carousel.Item key={request.title}>
-              {request && request.category !== 'cake' && (
+              {request && request.category === 'cupcake' && (
                 <>
                   <Image
                     src={request.img}

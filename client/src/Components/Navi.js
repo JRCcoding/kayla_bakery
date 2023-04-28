@@ -211,7 +211,7 @@ export default function App() {
                   <Nav.Link href='/login'>
                     <span className='navlink inline'>
                       <BsPersonCircle className=' inline' />
-                      &nbsp;Login
+                      &nbsp; Login
                     </span>
                   </Nav.Link>
                 </>

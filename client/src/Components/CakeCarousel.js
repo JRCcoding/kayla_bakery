@@ -31,7 +31,7 @@ const CakeCarousel = () => {
 
   return (
     <Container>
-      <Carousel controls={false} className='request_carousel'>
+      <Carousel controls={false} className='request_carousel' interval={999999}>
         {requests &&
           requests.slice(0, 13).map((request) => (
             <Carousel.Item key={request.title}>
