@@ -56,3 +56,16 @@ html, body {
 .clickable:hover {
   cursor: pointer;
 }
+
+
+.size_card {
+  text-align: center;
+  font-size: 2.0rem;
+  padding: 3.5%;
+}
+.size_card_selected {
+  text-align: center;
+  font-size: 2.0rem;
+  padding: 3.5%;
+  color: blue;
+}

@@ -2,6 +2,7 @@ import { MDBCard } from 'mdb-react-ui-kit'
 import React, { useState } from 'react'
 import {
   Button,
+  Card,
   Col,
   Container,
   FloatingLabel,
@@ -21,7 +22,7 @@ const CakeScreen = ({ history }) => {
   const formType = 'Cake'
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
-  const [size, setSize] = useState('Choose one...')
+  const [size, setSize] = useState()
   const [flavor, setFlavor] = useState('Choose one...')
   // const [edibleImage, setEdibleImage] = useState(false)
   const [qty, setQty] = useState(1)
@@ -48,6 +49,10 @@ const CakeScreen = ({ history }) => {
     )
     history.push('/thankyou')
   }
+
+  // const clickSize = (e, num) => {
+  //   setSize(num)
+  // }
   return (
     <div className='background_pattern'>
       <Container>
@@ -59,8 +64,7 @@ const CakeScreen = ({ history }) => {
                 <Button className='backprod_button'>VIEW ALL PRODUCTS</Button>
               </div>
             </LinkContainer>
-            <Col md={8} lg={5} className='mx-auto'>
-              {/* <LinkContainer to='/products'>
+            {/* <LinkContainer to='/products'>
                 <button className='backprod_button absolute top-0 text-white'>
                   GO BACK
                 </button>
@@ -71,8 +75,7 @@ const CakeScreen = ({ history }) => {
                 src={cake}
                 alt='Kaylala Kakes'
               /> */}
-              <CakeCarousel />
-            </Col>
+
             <Col md={12} lg={5} className='mx-auto'>
               <ListGroup variant='flush' className='mr-2'>
                 <ListGroup.Item>
@@ -81,20 +84,74 @@ const CakeScreen = ({ history }) => {
                 <ListGroup>
                   <ListGroup.Item>
                     <Form onSubmit={submitHandler}>
-                      <FloatingLabel label='Size (starting price)'>
-                        <Form.Control
-                          as='select'
-                          onChange={(e) => setSize(e.target.value)}
-                        >
-                          <option value='Choose one...'>
-                            Choose one (4 layer)
-                          </option>
-                          <option value='10'>10 inch ($87+)</option>
-                          <option value='8'>8 inch ($67+)</option>
-                          <option value='6'>6 inch ($57+)</option>
-                          <option value='4'>4 inch ($27+)</option>
-                        </Form.Control>{' '}
-                      </FloatingLabel>
+                      <Row className='mb-20'>
+                        <Col className='my-auto'>
+                          <CakeCarousel />
+                        </Col>
+                        <Col>
+                          {/* <FloatingLabel label='Size (starting price)'>
+                            <Form.Control
+                              as='select'
+                              onChange={(e) => setSize(e.target.value)}
+                            >
+                              <option value='Choose one...'>
+                                Choose one (4 layer)
+                              </option>
+                              <option value='10'>10 inch ($87+)</option>
+                              <option value='8'>8 inch ($67+)</option>
+                              <option value='6'>6 inch ($57+)</option>
+                              <option value='4'>4 inch ($27+)</option>
+                            </Form.Control>{' '}
+                            <h3>{size}</h3>
+                          </FloatingLabel> */}
+                          <div className='text-center'>
+                            <h3 className='inline'>Pick A Size:</h3> (starting
+                            price)
+                          </div>
+
+                          <Card
+                            onClick={(e) => setSize(10)}
+                            className={
+                              size === 10
+                                ? 'size_card_selected'
+                                : 'size_card clickable'
+                            }
+                          >
+                            10 inch ($87+)
+                          </Card>
+                          <Card
+                            onClick={(e) => setSize(8)}
+                            className={
+                              size === 8
+                                ? 'size_card_selected'
+                                : 'size_card clickable'
+                            }
+                          >
+                            8 inch ($67+)
+                          </Card>
+                          <Card
+                            onClick={(e) => setSize(6)}
+                            className={
+                              size === 6
+                                ? 'size_card_selected'
+                                : 'size_card clickable'
+                            }
+                          >
+                            6 inch ($57+)
+                          </Card>
+                          <Card
+                            onClick={(e) => setSize(4)}
+                            className={
+                              size === 4
+                                ? 'size_card_selected'
+                                : 'size_card clickable'
+                            }
+                          >
+                            4 inch ($27+)
+                          </Card>
+                        </Col>
+                      </Row>
+
                       {/* <FloatingLabel label='Flavor'>
                         <Form.Control
                           as='select'
