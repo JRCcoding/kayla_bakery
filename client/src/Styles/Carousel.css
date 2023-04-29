@@ -1,8 +1,6 @@
 .product_carousel {
-  margin-bottom: 15%;
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
+  margin: auto;
 }
 
 .product_carousel_image {
@@ -20,7 +18,8 @@
 
 @media only screen and (max-width: 1000px) {
   .product_carousel {
-    margin-bottom: 25%;
+    margin-bottom: auto;
+    margin-top: auto;
   }
   .product_carousel_caption {
     scale: 140%;
