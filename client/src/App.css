@@ -60,12 +60,27 @@ html, body {
 
 .size_card {
   text-align: center;
+  font-family: Pacifico, cursive;
   font-size: 2.0rem;
   padding: 3.5%;
+  transition: all 1.5s;
 }
 .size_card_selected {
   text-align: center;
-  font-size: 2.0rem;
+  font-size: 2.1rem;  
+  font-family: Pacifico, cursive;
   padding: 3.5%;
-  color: blue;
+  color: rgb(186, 101, 219);
+  text-shadow: 3px 5px 5px rgb(143, 143, 143);
+  transition: all 1.5s;
+}
+
+
+@media only screen and (max-width: 500px) {
+  .size_card {
+    font-size: 1.3rem;
+  }
+  .size_card_selected {
+    font-size: 1.5rem;
+  }
 }

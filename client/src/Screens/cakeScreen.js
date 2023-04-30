@@ -76,78 +76,70 @@ const CakeScreen = ({ history }) => {
                 alt='Kaylala Kakes'
               /> */}
 
-            <Col md={12} lg={5} className='mx-auto'>
+            <Col md={12} lg={12} className='mx-auto'>
               <ListGroup variant='flush' className='mr-2'>
                 <ListGroup.Item>
-                  <h1 className='text-center font-Pacifico'>Custom Cake</h1>
+                  <h1 className='text-center text-5xl font-Pacifico'>
+                    Custom Cake
+                  </h1>
                 </ListGroup.Item>
                 <ListGroup>
                   <ListGroup.Item>
                     <Form onSubmit={submitHandler}>
-                      <Row className='mb-20'>
-                        <Col className='my-auto'>
-                          <CakeCarousel />
+                      <Row>
+                        <Col>
+                          <Card className='my-auto' style={{ height: '220px' }}>
+                            <CakeCarousel />
+                          </Card>
                         </Col>
                         <Col>
-                          {/* <FloatingLabel label='Size (starting price)'>
-                            <Form.Control
-                              as='select'
-                              onChange={(e) => setSize(e.target.value)}
-                            >
-                              <option value='Choose one...'>
-                                Choose one (4 layer)
-                              </option>
-                              <option value='10'>10 inch ($87+)</option>
-                              <option value='8'>8 inch ($67+)</option>
-                              <option value='6'>6 inch ($57+)</option>
-                              <option value='4'>4 inch ($27+)</option>
-                            </Form.Control>{' '}
-                            <h3>{size}</h3>
-                          </FloatingLabel> */}
-                          <div className='text-center'>
-                            <h3 className='inline'>Pick A Size:</h3> (starting
-                            price)
-                          </div>
+                          <Card style={{ height: '220px' }}>
+                            <div className='my-auto'>
+                              <div className='text-center'>
+                                <h3 className='inline'>Size</h3>
+                              </div>
 
-                          <Card
-                            onClick={(e) => setSize(10)}
-                            className={
-                              size === 10
-                                ? 'size_card_selected'
-                                : 'size_card clickable'
-                            }
-                          >
-                            10 inch ($87+)
-                          </Card>
-                          <Card
-                            onClick={(e) => setSize(8)}
-                            className={
-                              size === 8
-                                ? 'size_card_selected'
-                                : 'size_card clickable'
-                            }
-                          >
-                            8 inch ($67+)
-                          </Card>
-                          <Card
-                            onClick={(e) => setSize(6)}
-                            className={
-                              size === 6
-                                ? 'size_card_selected'
-                                : 'size_card clickable'
-                            }
-                          >
-                            6 inch ($57+)
-                          </Card>
-                          <Card
-                            onClick={(e) => setSize(4)}
-                            className={
-                              size === 4
-                                ? 'size_card_selected'
-                                : 'size_card clickable'
-                            }
-                          >
-                            4 inch ($27+)
+                              <Card
+                                onClick={(e) => setSize(10)}
+                                className={
+                                  size === 10
+                                    ? 'size_card_selected'
+                                    : 'size_card clickable'
+                                }
+                              >
+                                10 " ($87+)
+                              </Card>
+                              <Card
+                                onClick={(e) => setSize(8)}
+                                className={
+                                  size === 8
+                                    ? 'size_card_selected'
+                                    : 'size_card clickable'
+                                }
+                              >
+                                8 " ($67+)
+                              </Card>
+                              <Card
+                                onClick={(e) => setSize(6)}
+                                className={
+                                  size === 6
+                                    ? 'size_card_selected'
+                                    : 'size_card clickable'
+                                }
+                              >
+                                6 " ($57+)
+                              </Card>
+                              <Card
+                                onClick={(e) => setSize(4)}
+                                className={
+                                  size === 4
+                                    ? 'size_card_selected'
+                                    : 'size_card clickable'
+                                }
+                              >
+                                4 " ($27+)
+                              </Card>
+                            </div>
                           </Card>
                         </Col>
                       </Row>
