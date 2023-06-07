@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { LinkContainer } from 'react-router-bootstrap'
-import { Table, Button, Container, Card } from 'react-bootstrap'
+import { Button, Card, Container, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import Message from '../Components/Message'
-import Loader from '../Components/Loader'
+import { LinkContainer } from 'react-router-bootstrap'
 import { listRequests } from '../Actions/requestActions'
+import Loader from '../Components/Loader'
+import Message from '../Components/Message'
 
 const RequestListScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -38,10 +38,11 @@ const RequestListScreen = ({ history }) => {
                 <tr>
                   <th>ID</th>
                   <th>USER</th>
+                  <th>TYPE</th>
+
                   <th>PLACED</th>
                   <th>PAID</th>
                   <th>DELIVERED</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -49,6 +50,7 @@ const RequestListScreen = ({ history }) => {
                   <tr key={request._id}>
                     <td>{request._id.substring(19, 24)}</td>
                     <td>{request.name}</td>
+                    <td>{request.formType}</td>
                     <td>{request.createdAt.substring(0, 10)}</td>
                     <td>
                       {request.isPaid ? (

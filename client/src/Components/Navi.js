@@ -6,6 +6,8 @@ import { LinkContainer } from 'react-router-bootstrap'
 import '../Styles/Navi.css'
 import { BsPersonCircle } from 'react-icons/bs'
 import { GiCupcake, GiStairsCake } from 'react-icons/gi'
+import PetsIcon from '@mui/icons-material/Pets'
+import RestaurantIcon from '@mui/icons-material/Restaurant'
 
 import {
   MDBDropdown,
@@ -40,88 +42,6 @@ export default function App() {
     window.scrollTo(0, 0)
   }, [])
   return (
-    // <Navbar
-    //   className='bg-Navbar text-white font-Lato'
-    //   expand='xl'
-    //   collapseOnSelect
-    //   fixed='top'
-    // >
-    //   <Container>
-    //     <LinkContainer to='/'>
-    //       <Navbar.Brand>
-    //         <h6
-    //           className='d-inline navtitle font-WindSong text-Navtitle'
-    //           style={{ zIndex: '9999', marginTop: '10%', marginBottom: '0' }}
-    //         >
-    //           Kaylala Kakes
-    //         </h6>
-    //       </Navbar.Brand>
-    //     </LinkContainer>
-    //     <Navbar.Toggle
-    //       aria-controls='responsive-navbar-nav'
-    //       // aria-expanded='false'
-    //       aria-label='Toggle navigation'
-    //       onClick={() => setShowBasic(!showBasic)}
-    //       className='toggler'
-    //     >
-    //       🍰
-    //       {/* 🧁 */}
-    //       {/* <MDBIcon className='burger' fas icon='birthday-cake' />{' '} */}
-    //       {/* &#127874; */}
-    //     </Navbar.Toggle>
-    //     <Navbar.Collapse id='responsive-navbar-nav'>
-    //       <Nav className='ml-auto'>
-    //         {userInfo ? (
-    //           <MDBDropdown id='username' className='navlink user_nav'>
-    //             <MDBDropdownToggle className='btn-light'>
-    //               {userInfo.name}
-    //             </MDBDropdownToggle>
-    //             <MDBDropdownMenu>
-    //               <LinkContainer to='/profile'>
-    //                 <MDBDropdownItem className='font-thin mx-3'>
-    //                   Profile
-    //                 </MDBDropdownItem>
-    //               </LinkContainer>
-    //               <MDBDropdownItem
-    //                 onClick={logoutHandler}
-    //                 className='font-thin mx-3'
-    //               >
-    //                 Logout
-    //               </MDBDropdownItem>
-    //             </MDBDropdownMenu>
-    //           </MDBDropdown>
-    //         ) : (
-    //           <LinkContainer to='/login'>
-    //             <MDBNavbarItem className='navlink '>
-    //               <i className='fas fa-user'></i> Sign In
-    //             </MDBNavbarItem>
-    //           </LinkContainer>
-    //         )}
-    //         {userInfo && userInfo.isAdmin && (
-    //           <LinkContainer to='/admin/requestlist'>
-    //             <MDBNavbarItem className='navlink'>Requests</MDBNavbarItem>
-    //           </LinkContainer>
-    //         )}
-
-    //         <LinkContainer to='/products'>
-    //           <MDBNavbarItem link className='navlink clickable'>
-    //             Products
-    //           </MDBNavbarItem>
-    //         </LinkContainer>
-    //         {/* <LinkContainer to='/about'>
-    //           <MDBNavbarItem link className='navlink'>
-    //             About
-    //           </MDBNavbarItem>
-    //         </LinkContainer> */}
-    //         <LinkContainer to='/contact'>
-    //           <MDBNavbarItem link className='navlink'>
-    //             Contact
-    //           </MDBNavbarItem>
-    //         </LinkContainer>
-    //       </Nav>
-    //     </Navbar.Collapse>
-    //   </Container>
-    // </Navbar>
     <>
       {' '}
       {[false].map((expand) => (
@@ -169,7 +89,7 @@ export default function App() {
                 <NavDropdown.Divider />
                 <Nav.Link disabled>
                   <strong>
-                    <h2>Forms:</h2>
+                    <h2>Products:</h2>
                   </strong>
                 </Nav.Link>
                 <Nav.Link href='/cakes'>
@@ -182,6 +102,18 @@ export default function App() {
                   <span className='navlink'>
                     <GiCupcake className='inline' />
                     &nbsp; Cupcakes
+                  </span>
+                </Nav.Link>
+                <Nav.Link href='/pupcakes'>
+                  <span className='navlink'>
+                    <PetsIcon />
+                    &nbsp; PupCakes
+                  </span>
+                </Nav.Link>
+                <Nav.Link href='/trifles'>
+                  <span className='navlink'>
+                    <RestaurantIcon />
+                    &nbsp; Trifles
                   </span>
                 </Nav.Link>
               </Nav>

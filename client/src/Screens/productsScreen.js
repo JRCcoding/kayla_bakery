@@ -1,19 +1,12 @@
 import React from 'react'
-import {
-  Row,
-  Container,
-  Card,
-  Image,
-  CarouselItem,
-  Carousel,
-  Col,
-  Figure,
-} from 'react-bootstrap'
+import { Card, Container, Figure, Row } from 'react-bootstrap'
 import { Fade } from 'react-reveal'
 import { LinkContainer } from 'react-router-bootstrap'
-import '../Styles/Product.css'
 import cake from '../Images/cakes_friends.webp'
 import cupcake from '../Images/cupcakes_redpink.webp'
+import pupcakes from '../Images/pupcakes.png'
+import trifles from '../Images/trifles.png'
+import '../Styles/Product.css'
 
 const ProductsScreen = () => {
   return (
@@ -83,14 +76,14 @@ const ProductsScreen = () => {
                         </Figure.Caption>
                         <Figure.Caption className='text-black card_price'>
                           <h4>
-                            Starting Price: <strong>$2.75</strong>
+                            Starting Price: <strong>$2.75/each</strong>
                           </h4>
                         </Figure.Caption>
                       </Card.Body>
                     </Card>
                   </Figure>
                 </LinkContainer>
-                <Card className='mx-auto'>
+                {/* <Card className='mx-auto'>
                   <Col className='text-center'>
                     <p className='text-2xl py-5'>
                       <strong className='text-3xl font-Pacifico'>Note:</strong>{' '}
@@ -99,7 +92,75 @@ const ProductsScreen = () => {
                       for cakes depending on how many layers are requested.
                     </p>
                   </Col>
-                </Card>
+                </Card> */}
+                <LinkContainer to={`/pupcakes`}>
+                  <Figure>
+                    <Card className='product_card md:mb-5 mt-2'>
+                      <Card.Header>
+                        {' '}
+                        <Card.Title className='clickable inline'>
+                          <h3 className='product_title font-Pacifico scale-150 my-auto'>
+                            Pupcakes
+                          </h3>
+                        </Card.Title>
+                      </Card.Header>
+
+                      <Figure.Image
+                        position='top'
+                        alt='Kaylala Kakes'
+                        // src={product.img}
+                        src={pupcakes}
+                        className='clickable'
+                      />
+
+                      <Card.Body className='clickable'>
+                        <Figure.Caption className='text-black mb-5'>
+                          <h4>
+                            Cupcakes specially made for your furry companion!
+                          </h4>
+                        </Figure.Caption>
+                        <Figure.Caption className='text-black card_price'>
+                          <h4>
+                            Starting Price: <strong>$33/dozen</strong>
+                          </h4>
+                        </Figure.Caption>
+                      </Card.Body>
+                    </Card>
+                  </Figure>
+                </LinkContainer>
+                <LinkContainer to={`/trifles`}>
+                  <Figure>
+                    <Card className='product_card md:mb-5 mt-2'>
+                      <Card.Header>
+                        {' '}
+                        <Card.Title className='clickable inline'>
+                          <h3 className='product_title font-Pacifico scale-150 my-auto'>
+                            Trifles
+                          </h3>
+                        </Card.Title>
+                      </Card.Header>
+
+                      <Figure.Image
+                        position='top'
+                        alt='Kaylala Kakes'
+                        // src={product.img}
+                        src={trifles}
+                        className='clickable'
+                      />
+
+                      <Card.Body className='clickable'>
+                        <Figure.Caption className='text-black mb-5'>
+                          <h4>--</h4>
+                        </Figure.Caption>
+                        <Figure.Caption className='text-black card_price'>
+                          <h4>
+                            Starting Price: <strong>$63/dozen</strong>
+                          </h4>
+                        </Figure.Caption>
+                      </Card.Body>
+                    </Card>
+                  </Figure>
+                </LinkContainer>
               </Row>
             </Container>
           </div>

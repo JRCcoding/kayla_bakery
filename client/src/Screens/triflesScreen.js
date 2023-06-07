@@ -2,8 +2,8 @@ import { MDBCard } from 'mdb-react-ui-kit'
 import React, { useState } from 'react'
 import {
   Button,
-  Col,
   Card,
+  Col,
   Container,
   FloatingLabel,
   Form,
@@ -14,16 +14,16 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { createRequest } from '../Actions/requestActions'
-import CupcakeCarousel from '../Components/CupcakeCarousel'
+import trifles from '../Images/trifles_og.jpg'
 
-const CupcakeScreen = ({ history }) => {
-  const formType = 'Cupcakes'
+const TriflesScreen = ({ history }) => {
+  const formType = 'Trifles'
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
-  const [size, setSize] = useState('cupcake...')
-  const [flavor, setFlavor] = useState('cupcake...')
+  const [size, setSize] = useState()
+  const [flavor, setFlavor] = useState('Choose one...')
   // const [edibleImage, setEdibleImage] = useState(false)
-  const [qty, setQty] = useState(12)
+  const [qty, setQty] = useState(1)
   const [date, setDate] = useState('')
   const [additional, setAdditional] = useState('')
   const [name, setName] = useState(userInfo ? userInfo.name : '')
@@ -47,6 +47,10 @@ const CupcakeScreen = ({ history }) => {
     )
     history.push('/thankyou')
   }
+
+  // const clickSize = (e, num) => {
+  //   setSize(num)
+  // }
   return (
     <div className='background_pattern'>
       {!userInfo ? (
@@ -66,84 +70,98 @@ const CupcakeScreen = ({ history }) => {
                   <Button className='backprod_button'>VIEW ALL PRODUCTS</Button>
                 </div>
               </LinkContainer>
+              {/* <LinkContainer to='/products'>
+                <button className='backprod_button absolute top-0 text-white'>
+                  GO BACK
+                </button>
+              </LinkContainer>
+              <Image
+                fluid
+                style={{ height: 'auto', width: '500px' }}
+                src={cake}
+                alt='Kaylala Kakes'
+              /> */}
 
-              <Col className='mx-auto'>
+              <Col md={12} lg={12} className='mx-auto'>
                 <ListGroup variant='flush' className='mr-2'>
                   <ListGroup.Item>
-                    <h1 className='text-center font-Pacifico'>
-                      Custom Cupcakes
+                    <h1 className='text-center text-5xl font-Pacifico'>
+                      Trifles
                     </h1>
                   </ListGroup.Item>
                   <ListGroup>
                     <ListGroup.Item>
                       <Form onSubmit={submitHandler}>
-                        {/* <FloatingLabel label='Quantity: (Starting Price)'>
-                        <Form.Control
-                          as='select'
-                          value={qty}
-                          onChange={(e) => setQty(e.target.value)}
-                        >
-                          <option value='12'>Dozen ($33)</option>
-                          <option value='24'>2 Dozen ($66)</option>
-                          <option value='1'>Single Cupcake ($2.75)</option>
-                        </Form.Control>
-                      </FloatingLabel> */}
                         <Row>
                           <Col>
                             <Card
-                              className='my-auto'
-                              style={{
-                                height: 'auto',
-                                width: 'auto',
-                              }}
+                              className='my-auto mx-auto'
+                              style={{ height: 'auto', width: '70%' }}
                             >
-                              <CupcakeCarousel />
+                              <img src={trifles} alt='trifles' />
                             </Card>
                           </Col>
-                          <Col>
-                            <Card
-                              style={{ height: '100%' }}
-                              className='my-auto'
-                            >
-                              <div className='my-auto'>
-                                <div className='text-center'>
-                                  <h3 className='inline'>Size</h3>
-                                </div>
-
-                                <Card
-                                  onClick={(e) => setSize(12)}
-                                  className={
-                                    size === 12
-                                      ? 'size_card_selected'
-                                      : 'size_card clickable'
-                                  }
-                                >
-                                  1 Dozen ($33)
-                                </Card>
-                                <Card
-                                  onClick={(e) => setSize(24)}
-                                  className={
-                                    size === 24
-                                      ? 'size_card_selected'
-                                      : 'size_card clickable'
-                                  }
-                                >
-                                  2 Dozen ($66)
-                                </Card>
-                                <Card
-                                  onClick={(e) => setSize(1)}
-                                  className={
-                                    size === 1
-                                      ? 'size_card_selected'
-                                      : 'size_card clickable'
-                                  }
-                                >
-                                  Single Cupcake ($2.75)
-                                </Card>
+                          {/* <Col>
+                          <Card style={{ height: '100%' }} className='my-auto'>
+                            <div className='my-auto'>
+                              <div className='text-center'>
+                                <h3 className='inline'>Size</h3>
                               </div>
-                            </Card>
-                          </Col>
+
+                              <Card
+                                onClick={(e) => setSize(10)}
+                                className={
+                                  size === 10
+                                    ? 'size_card_selected'
+                                    : 'size_card clickable'
+                                }
+                              >
+                                10 " ($87+)
+                              </Card>
+                              <Card
+                                onClick={(e) => setSize(8)}
+                                className={
+                                  size === 8
+                                    ? 'size_card_selected'
+                                    : 'size_card clickable'
+                                }
+                              >
+                                8 " ($67+)
+                              </Card>
+                              <Card
+                                onClick={(e) => setSize(6)}
+                                className={
+                                  size === 6
+                                    ? 'size_card_selected'
+                                    : 'size_card clickable'
+                                }
+                              >
+                                6 " ($57+)
+                              </Card>
+                              <Card
+                                onClick={(e) => setSize(4)}
+                                className={
+                                  size === 4
+                                    ? 'size_card_selected'
+                                    : 'size_card clickable'
+                                }
+                              >
+                                4 " ($27+)
+                              </Card>
+                            </div>
+                          </Card>
+                        </Col> */}
                         </Row>
+
+                        {/* <FloatingLabel label='Flavor'>
+                        <Form.Control
+                          as='select'
+                          onChange={(e) => setFlavor(e.target.value)}
+                        >
+                          <option value='Choose one...'>Choose one...</option>
+                          <option value='Vanilla'>Vanilla</option>
+                        </Form.Control>{' '}
+                      </FloatingLabel> */}
                         <p className='text-2xl py-5'>
                           <strong className='text-3xl font-Pacifico'>
                             Note:
@@ -153,6 +171,19 @@ const CupcakeScreen = ({ history }) => {
                           change for cakes depending on how many layers are
                           requested.
                         </p>
+                        <FloatingLabel label='Quantity:'>
+                          <Form.Control
+                            as='select'
+                            value={qty}
+                            onChange={(e) => setQty(e.target.value)}
+                          >
+                            {[...Array.from(Array(10)).keys()].map((x) => (
+                              <option key={x + 1} value={x + 1}>
+                                {x + 1}
+                              </option>
+                            ))}
+                          </Form.Control>
+                        </FloatingLabel>
                         <FloatingLabel label='Date:'>
                           <Form.Control
                             type='date'
@@ -160,23 +191,18 @@ const CupcakeScreen = ({ history }) => {
                             onChange={(e) => setDate(e.target.value)}
                             // required
                           />
-                        </FloatingLabel>{' '}
-                        <FloatingLabel
-                          label='Themes, customization, toppers, anything that defines
-                    the cupcakes you want!'
-                        >
+                        </FloatingLabel>
+                        <FloatingLabel label='Any customizations here!'>
                           <Form.Control
                             as='textarea'
                             style={{ height: '100px' }}
                             value={additional}
                             onChange={(e) => setAdditional(e.target.value)}
                             required
-                            placeholder='Themes, customization,  toppers, anything that defines
-                    the cupcakes you want!'
+                            placeholder='Any customizations here!'
                           />
                         </FloatingLabel>
                         <ListGroupItem>
-                          {' '}
                           <FloatingLabel label='Name:'>
                             <Form.Control
                               type='text'
@@ -202,6 +228,7 @@ const CupcakeScreen = ({ history }) => {
                             />
                           </FloatingLabel>
                         </ListGroupItem>
+
                         <button
                           type='submit'
                           className='btn btn-primary btn-block'
@@ -226,4 +253,4 @@ const CupcakeScreen = ({ history }) => {
   )
 }
 
-export default CupcakeScreen
+export default TriflesScreen
