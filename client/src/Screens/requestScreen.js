@@ -1,35 +1,28 @@
-import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Button, Card, Col, Container, ListGroup, Row } from 'react-bootstrap'
 import { PayPalButton } from 'react-paypal-button-v2'
-import { Link } from 'react-router-dom'
-import {
-  Row,
-  Col,
-  ListGroup,
-  Image,
-  Card,
-  Button,
-  Container,
-} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import Message from '../Components/Message'
-import Loader from '../Components/Loader'
+import { withRouter } from 'react-router-dom'
 import {
+  deliverRequest,
   getRequestDetails,
   payRequest,
   payRequestAdmin,
-  deliverRequest,
 } from '../Actions/requestActions'
+import Loader from '../Components/Loader'
+import Message from '../Components/Message'
 import {
-  REQUEST_PAY_RESET,
   REQUEST_DELIVER_RESET,
+  REQUEST_PAY_RESET,
 } from '../Constants/requestConstants'
-import { withRouter } from 'react-router-dom'
 
 const RequestScreen = ({ match, history }) => {
   const requestId = match.params.id
 
   const [sdkReady, setSdkReady] = useState(false)
+
+  const [adminPrice, setAdminPrice] = useState(0)
 
   const dispatch = useDispatch()
 
@@ -198,7 +191,7 @@ const RequestScreen = ({ match, history }) => {
                         <Loader />
                       ) : (
                         <PayPalButton
-                          amount={request.totalPrice}
+                          amount={adminPrice}
                           onSuccess={successPaymentHandler}
                         />
                       )}

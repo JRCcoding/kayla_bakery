@@ -21,8 +21,6 @@ const CakeScreen = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
   const [size, setSize] = useState()
-  const [flavor, setFlavor] = useState('Choose one...')
-  // const [edibleImage, setEdibleImage] = useState(false)
   const [qty, setQty] = useState(1)
   const [date, setDate] = useState('')
   const [additional, setAdditional] = useState('')
@@ -30,13 +28,13 @@ const CakeScreen = ({ history }) => {
   const [email, setEmail] = useState(userInfo ? userInfo.email : '')
   const [number, setNumber] = useState(userInfo ? userInfo.number : '')
   const dispatch = useDispatch()
+
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(
       createRequest({
         formType,
         size,
-        flavor,
         qty,
         date,
         additional,
@@ -70,18 +68,6 @@ const CakeScreen = ({ history }) => {
                   <Button className='backprod_button'>VIEW ALL PRODUCTS</Button>
                 </div>
               </LinkContainer>
-              {/* <LinkContainer to='/products'>
-                <button className='backprod_button absolute top-0 text-white'>
-                  GO BACK
-                </button>
-              </LinkContainer>
-              <Image
-                fluid
-                style={{ height: 'auto', width: '500px' }}
-                src={cake}
-                alt='Kaylala Kakes'
-              /> */}
-
               <Col md={12} lg={12} className='mx-auto'>
                 <ListGroup variant='flush' className='mr-2'>
                   <ListGroup.Item>
@@ -155,16 +141,6 @@ const CakeScreen = ({ history }) => {
                             </Card>
                           </Col>
                         </Row>
-
-                        {/* <FloatingLabel label='Flavor'>
-                        <Form.Control
-                          as='select'
-                          onChange={(e) => setFlavor(e.target.value)}
-                        >
-                          <option value='Choose one...'>Choose one...</option>
-                          <option value='Vanilla'>Vanilla</option>
-                        </Form.Control>{' '}
-                      </FloatingLabel> */}
                         <p className='text-2xl py-5'>
                           <strong className='text-3xl font-Pacifico'>
                             Note:
@@ -244,11 +220,6 @@ const CakeScreen = ({ history }) => {
                         </button>
                       </Form>
                     </ListGroup.Item>
-                    {/* <ListGroup.Item
-                  style={{ display: 'flex', justifyContent: 'space-around' }}
-                >
-                 
-                </ListGroup.Item> */}
                   </ListGroup>
                 </ListGroup>
               </Col>

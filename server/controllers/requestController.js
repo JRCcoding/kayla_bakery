@@ -119,7 +119,7 @@ const updateRequestToDelivered = asyncHandler(async (req, res) => {
 // @route   GET /api/requests/myrequests
 // @access  Private
 const getMyRequests = asyncHandler(async (req, res) => {
-  const requests = await Request.find({ user: req.user._id })
+  const requests = await Request.find({ userId: req.userId })
   res.json(requests)
 })
 

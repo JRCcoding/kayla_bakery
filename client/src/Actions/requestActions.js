@@ -35,46 +35,6 @@ export const createRequest = (request) => async (dispatch, getState) => {
     type: REQUEST_CREATE_REQUEST,
     payload: request,
   })
-  // try {
-  //   dispatch({
-  //     type: REQUEST_CREATE_REQUEST,
-  //   })
-
-  //   const {
-  //     userLogin: { userInfo },
-  //   } = getState()
-
-  //   const config = {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization: `Bearer ${userInfo.token}`,
-  //     },
-  //   }
-
-  //   const { data } = await axios.post(`/api/requests`, request, config)
-
-  //   dispatch({
-  //     type: REQUEST_CREATE_SUCCESS,
-  //     payload: data,
-  //   })
-  //   dispatch({
-  //     type: CART_CLEAR_ITEMS,
-  //     payload: data,
-  //   })
-  //   localStorage.removeItem('cartItems')
-  // } catch (error) {
-  //   const message =
-  //     error.response && error.response.data.message
-  //       ? error.response.data.message
-  //       : error.message
-  //   if (message === 'Not authorized, token failed') {
-  //     dispatch(logout())
-  //   }
-  //   dispatch({
-  //     type: REQUEST_CREATE_FAIL,
-  //     payload: message,
-  //   })
-  // }
 }
 
 export const getRequestDetails = (id) => async (dispatch, getState) => {
@@ -241,11 +201,11 @@ export const listMyRequests = () => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get(`/api/requests/myrequests`, config)
-
     dispatch({
       type: REQUEST_LIST_MY_SUCCESS,
       payload: data,
     })
+    console.log(data)
   } catch (error) {
     const message =
       error.response && error.response.data.message

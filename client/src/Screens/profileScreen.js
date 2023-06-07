@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { Table, Form, Button, Row, Col, Container, Card } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Button, Card, Col, Container, Form, Row, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import Message from '../Components/Message'
-import Loader from '../Components/Loader'
-import { getUserDetails, updateUserProfile } from '../Actions/userActions'
-import { listMyRequests } from '../Actions/requestActions'
-import { USER_UPDATE_PROFILE_RESET } from '../Constants/userConstants'
+import { LinkContainer } from 'react-router-bootstrap'
 import { withRouter } from 'react-router-dom'
+import { listMyRequests } from '../Actions/requestActions'
+import { getUserDetails, updateUserProfile } from '../Actions/userActions'
+import Loader from '../Components/Loader'
+import Message from '../Components/Message'
+import { USER_UPDATE_PROFILE_RESET } from '../Constants/userConstants'
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
@@ -28,12 +29,13 @@ const ProfileScreen = ({ location, history }) => {
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
   const { success } = userUpdateProfile
 
-  const requestListMy = useSelector((state) => state.requestListMy)
+  const requestList = useSelector((state) => state.requestList)
   const {
     loading: loadingRequests,
     error: errorRequests,
-    requests,
-  } = requestListMy
+    // requests,
+  } = requestList
+  const [requests, setRequests] = useState()
 
   useEffect(() => {
     if (!userInfo) {
@@ -50,6 +52,16 @@ const ProfileScreen = ({ location, history }) => {
       }
     }
   }, [dispatch, history, userInfo, user, success])
+
+  useEffect(() => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+    const { data } = axios.get('/api/requests/myrequests', config)
+    setRequests(data)
+  }, [])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -134,30 +146,37 @@ const ProfileScreen = ({ location, history }) => {
                 </Form>
               )}
             </Col>
-            <Col md={9}>
+            <Col md={9} style={{ minHeight: '200px' }}>
               <h2>My Requests</h2>
               {loadingRequests ? (
                 <Loader />
               ) : errorRequests ? (
                 <Message variant='danger'>{errorRequests}</Message>
               ) : (
-                <Table striped brequested hover responsive className='table-sm'>
+                <Table
+                  striped='true'
+                  bordered='true'
+                  hover='true'
+                  responsive='true'
+                  className='table-sm'
+                >
                   <thead>
                     <tr>
                       <th>ID</th>
                       <th>DATE</th>
-                      <th>TOTAL</th>
+                      {/* <th>TOTAL</th> */}
                       <th>PAID</th>
                       <th>DELIVERED</th>
-                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {requests.map((request) => (
+                    {requests?.map((request) => (
                       <tr key={request._id}>
                         <td>{request._id}</td>
                         <td>{request.createdAt.substring(0, 10)}</td>
-                        <td>${request.totalPrice}</td>
+                        {/* <td>
+                          ${request.totalPrice && <>{request.totalPrice}</>}
+                        </td> */}
                         <td>
                           {request.isPaid ? (
                             request.paidAt.substring(0, 10)

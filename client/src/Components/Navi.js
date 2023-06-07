@@ -1,31 +1,15 @@
-import '../index.css'
-import '../App.css'
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { LinkContainer } from 'react-router-bootstrap'
-import '../Styles/Navi.css'
-import { BsPersonCircle } from 'react-icons/bs'
-import { GiCupcake, GiStairsCake } from 'react-icons/gi'
 import PetsIcon from '@mui/icons-material/Pets'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
+import React, { useEffect, useState } from 'react'
+import { BsPersonCircle } from 'react-icons/bs'
+import { GiCupcake, GiStairsCake } from 'react-icons/gi'
+import { useDispatch, useSelector } from 'react-redux'
+import { LinkContainer } from 'react-router-bootstrap'
+import '../App.css'
+import '../Styles/Navi.css'
+import '../index.css'
 
-import {
-  MDBDropdown,
-  MDBIcon,
-  MDBNavbarItem,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-} from 'mdb-react-ui-kit'
-import {
-  Nav,
-  Navbar,
-  Container,
-  Button,
-  Form,
-  NavDropdown,
-  Offcanvas,
-} from 'react-bootstrap'
+import { Nav, NavDropdown, Navbar, Offcanvas } from 'react-bootstrap'
 import { logout } from '../Actions/userActions'
 
 export default function App() {
@@ -79,6 +63,16 @@ export default function App() {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
+              {!userInfo && (
+                <>
+                  <Nav.Link href='/login'>
+                    <span className='navlink inline'>
+                      <BsPersonCircle className=' inline' />
+                      &nbsp; Login
+                    </span>
+                  </Nav.Link>
+                </>
+              )}
               <Nav className='justify-content-end flex-grow-1 pe-3'>
                 <Nav.Link href='/'>
                   <span className='navlink'>Home</span>
@@ -117,7 +111,7 @@ export default function App() {
                   </span>
                 </Nav.Link>
               </Nav>
-              {userInfo ? (
+              {userInfo && (
                 <>
                   <NavDropdown.Divider />
                   <NavDropdown
@@ -137,15 +131,6 @@ export default function App() {
                       Logout
                     </NavDropdown.Item>
                   </NavDropdown>
-                </>
-              ) : (
-                <>
-                  <Nav.Link href='/login'>
-                    <span className='navlink inline'>
-                      <BsPersonCircle className=' inline' />
-                      &nbsp; Login
-                    </span>
-                  </Nav.Link>
                 </>
               )}
             </Offcanvas.Body>

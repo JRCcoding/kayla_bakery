@@ -1,14 +1,14 @@
 import express from 'express'
-const router = express.Router()
 import {
   addRequestItems,
-  getRequestById,
-  updateRequestToPaid,
-  updateRequestToDelivered,
   getMyRequests,
+  getRequestById,
   getRequests,
+  updateRequestToDelivered,
+  updateRequestToPaid,
 } from '../controllers/requestController.js'
-import { protect, admin } from '../middleware/authMiddleware.js'
+import { admin, protect } from '../middleware/authMiddleware.js'
+const router = express.Router()
 
 router
   .route('/')

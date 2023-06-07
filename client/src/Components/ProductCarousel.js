@@ -1,9 +1,11 @@
 import React from 'react'
-import { Container, Carousel, Image } from 'react-bootstrap'
-import '../Styles/Carousel.css'
+import { Carousel, Image } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import cake from '../Images/cakes_friends.webp'
 import cupcake from '../Images/cupcakes_redpink.webp'
+import pupcakes from '../Images/pupcakes.png'
+import trifles from '../Images/trifles.png'
+import '../Styles/Carousel.css'
 
 const ProductCarousel = () => {
   return (
@@ -13,7 +15,7 @@ const ProductCarousel = () => {
       style={{ marginTop: '30px' }}
     >
       <Carousel.Item>
-        <LinkContainer to={`/products`}>
+        <LinkContainer to={`/cakes`}>
           <Image
             src={cake}
             alt='Kaylala Kakes'
@@ -27,7 +29,7 @@ const ProductCarousel = () => {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <LinkContainer to={`/products`}>
+        <LinkContainer to={`/cupcakes`}>
           <Image
             src={cupcake}
             alt='Kaylala cupKakes'
@@ -38,6 +40,34 @@ const ProductCarousel = () => {
 
         <Carousel.Caption>
           <h2 className='product_carousel_caption font-Pacifico'>Cupcakes</h2>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <LinkContainer to={`/pupcakes`}>
+          <Image
+            src={pupcakes}
+            alt='Kaylala cupKakes'
+            fluid
+            className='product_carousel_image rounded'
+          />
+        </LinkContainer>
+
+        <Carousel.Caption>
+          <h2 className='product_carousel_caption font-Pacifico'>Pupcakes</h2>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <LinkContainer to={`/trifles`}>
+          <Image
+            src={trifles}
+            alt='Kaylala cupKakes'
+            fluid
+            className='product_carousel_image rounded'
+          />
+        </LinkContainer>
+
+        <Carousel.Caption>
+          <h2 className='product_carousel_caption font-Pacifico'>Trifles</h2>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
