@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Container, Form, Row, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -29,13 +28,12 @@ const ProfileScreen = ({ location, history }) => {
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
   const { success } = userUpdateProfile
 
-  const requestList = useSelector((state) => state.requestList)
+  const requestList = useSelector((state) => state.requestListMy)
   const {
     loading: loadingRequests,
     error: errorRequests,
-    // requests,
+    requests,
   } = requestList
-  const [requests, setRequests] = useState()
 
   useEffect(() => {
     if (!userInfo) {
@@ -52,16 +50,6 @@ const ProfileScreen = ({ location, history }) => {
       }
     }
   }, [dispatch, history, userInfo, user, success])
-
-  useEffect(() => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
-    const { data } = axios.get('/api/requests/myrequests', config)
-    setRequests(data)
-  }, [])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -82,7 +70,6 @@ const ProfileScreen = ({ location, history }) => {
             <Col md={3}>
               <h2>User Profile</h2>
               {message && <Message variant='danger'>{message}</Message>}
-              {}
               {success && <Message variant='success'>Profile Updated</Message>}
               {loading ? (
                 <Loader />
@@ -153,18 +140,11 @@ const ProfileScreen = ({ location, history }) => {
               ) : errorRequests ? (
                 <Message variant='danger'>{errorRequests}</Message>
               ) : (
-                <Table
-                  striped='true'
-                  bordered='true'
-                  hover='true'
-                  responsive='true'
-                  className='table-sm'
-                >
+                <Table striped bordered hover responsive className='table-sm'>
                   <thead>
                     <tr>
                       <th>ID</th>
                       <th>DATE</th>
-                      {/* <th>TOTAL</th> */}
                       <th>PAID</th>
                       <th>DELIVERED</th>
                     </tr>
@@ -174,9 +154,6 @@ const ProfileScreen = ({ location, history }) => {
                       <tr key={request._id}>
                         <td>{request._id}</td>
                         <td>{request.createdAt.substring(0, 10)}</td>
-                        {/* <td>
-                          ${request.totalPrice && <>{request.totalPrice}</>}
-                        </td> */}
                         <td>
                           {request.isPaid ? (
                             request.paidAt.substring(0, 10)

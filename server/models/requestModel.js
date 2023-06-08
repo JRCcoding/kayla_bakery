@@ -2,6 +2,12 @@ import mongoose from 'mongoose'
 
 const requestSchema = mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+      number: { type: String, required: false },
+    },
     formType: { type: String, required: false },
     size: { type: String, required: false },
     qty: { type: String, required: false },

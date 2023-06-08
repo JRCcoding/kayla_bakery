@@ -30,14 +30,7 @@ const addRequestItems = asyncHandler(async (req, res) => {
     return
   } else {
     const request = new Request({
-      // requestItems,
-      // user: req.user._id,
-      // shippingAddress,
-      // paymentMethod,
-      // itemsPrice,
-      // taxPrice,
-      // shippingPrice,
-      // totalPrice,
+      user: req.user._id,
       formType,
       size,
       flavor,
@@ -119,7 +112,7 @@ const updateRequestToDelivered = asyncHandler(async (req, res) => {
 // @route   GET /api/requests/myrequests
 // @access  Private
 const getMyRequests = asyncHandler(async (req, res) => {
-  const requests = await Request.find({ userId: req.userId })
+  const requests = await Request.find({ user: req.user._id })
   res.json(requests)
 })
 
