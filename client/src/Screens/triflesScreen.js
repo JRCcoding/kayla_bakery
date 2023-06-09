@@ -152,7 +152,14 @@ const TriflesScreen = ({ history }) => {
                           </Card>
                         </Col> */}
                         </Row>
-
+                        <h1
+                          style={{
+                            fontFamily: 'Pacifico',
+                            textAlign: 'center',
+                          }}
+                        >
+                          $63/dozen
+                        </h1>
                         {/* <FloatingLabel label='Flavor'>
                         <Form.Control
                           as='select'

@@ -2,8 +2,8 @@ import { MDBCard } from 'mdb-react-ui-kit'
 import React, { useState } from 'react'
 import {
   Button,
-  Col,
   Card,
+  Col,
   Container,
   FloatingLabel,
   Form,
@@ -21,8 +21,6 @@ const CupcakeScreen = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
   const [size, setSize] = useState('cupcake...')
-  const [flavor, setFlavor] = useState('cupcake...')
-  // const [edibleImage, setEdibleImage] = useState(false)
   const [qty, setQty] = useState(12)
   const [date, setDate] = useState('')
   const [additional, setAdditional] = useState('')
@@ -36,7 +34,6 @@ const CupcakeScreen = ({ history }) => {
       createRequest({
         formType,
         size,
-        flavor,
         qty,
         date,
         additional,
@@ -77,17 +74,6 @@ const CupcakeScreen = ({ history }) => {
                   <ListGroup>
                     <ListGroup.Item>
                       <Form onSubmit={submitHandler}>
-                        {/* <FloatingLabel label='Quantity: (Starting Price)'>
-                        <Form.Control
-                          as='select'
-                          value={qty}
-                          onChange={(e) => setQty(e.target.value)}
-                        >
-                          <option value='12'>Dozen ($33)</option>
-                          <option value='24'>2 Dozen ($66)</option>
-                          <option value='1'>Single Cupcake ($2.75)</option>
-                        </Form.Control>
-                      </FloatingLabel> */}
                         <Row>
                           <Col>
                             <Card
@@ -158,7 +144,6 @@ const CupcakeScreen = ({ history }) => {
                             type='date'
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
-                            // required
                           />
                         </FloatingLabel>{' '}
                         <FloatingLabel
@@ -190,7 +175,6 @@ const CupcakeScreen = ({ history }) => {
                               type='text'
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
-                              // required
                             />
                           </FloatingLabel>
                           <FloatingLabel label='Number:'>
@@ -210,11 +194,6 @@ const CupcakeScreen = ({ history }) => {
                         </button>
                       </Form>
                     </ListGroup.Item>
-                    {/* <ListGroup.Item
-                  style={{ display: 'flex', justifyContent: 'space-around' }}
-                >
-                 
-                </ListGroup.Item> */}
                   </ListGroup>
                 </ListGroup>
               </Col>

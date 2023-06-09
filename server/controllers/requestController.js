@@ -5,28 +5,12 @@ import Request from '../models/requestModel.js'
 // @route   POST /api/requests
 // @access  Private
 const addRequestItems = asyncHandler(async (req, res) => {
-  const {
-    // requestItems,
-    // shippingAddress,
-    // paymentMethod,
-    // itemsPrice,
-    // taxPrice,
-    // shippingPrice,
-    // totalPrice,
-    formType,
-    size,
-    flavor,
-    qty,
-    date,
-    additional,
-    name,
-    email,
-    number,
-  } = req.body
+  const { formType, size, flavor, qty, date, additional, name, email, number } =
+    req.body
 
-  if (!size) {
+  if (!formType) {
     res.status(400)
-    throw new Error('No request items')
+    throw new Error('No formType submitted.')
     return
   } else {
     const request = new Request({

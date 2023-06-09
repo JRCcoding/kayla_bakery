@@ -6,7 +6,6 @@ const requestSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'User',
-      number: { type: String, required: false },
     },
     formType: { type: String, required: false },
     size: { type: String, required: false },
@@ -15,7 +14,7 @@ const requestSchema = mongoose.Schema(
     additional: { type: String, required: false },
     name: { type: String, required: false },
     email: { type: String, required: false },
-    number: { type: String, required: false },
+    number: { type: String, required: true },
     isPaid: {
       type: Boolean,
       required: true,

@@ -21,8 +21,6 @@ const PupcakesScreen = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
   const [size, setSize] = useState()
-  const [flavor, setFlavor] = useState('Choose one...')
-  // const [edibleImage, setEdibleImage] = useState(false)
   const [qty, setQty] = useState(1)
   const [date, setDate] = useState('')
   const [additional, setAdditional] = useState('')
@@ -36,7 +34,6 @@ const PupcakesScreen = ({ history }) => {
       createRequest({
         formType,
         size,
-        flavor,
         qty,
         date,
         additional,
@@ -48,9 +45,6 @@ const PupcakesScreen = ({ history }) => {
     history.push('/thankyou')
   }
 
-  // const clickSize = (e, num) => {
-  //   setSize(num)
-  // }
   return (
     <div className='background_pattern'>
       {!userInfo ? (
@@ -70,23 +64,12 @@ const PupcakesScreen = ({ history }) => {
                   <Button className='backprod_button'>VIEW ALL PRODUCTS</Button>
                 </div>
               </LinkContainer>
-              {/* <LinkContainer to='/products'>
-                <button className='backprod_button absolute top-0 text-white'>
-                  GO BACK
-                </button>
-              </LinkContainer>
-              <Image
-                fluid
-                style={{ height: 'auto', width: '500px' }}
-                src={cake}
-                alt='Kaylala Kakes'
-              /> */}
 
               <Col md={12} lg={12} className='mx-auto'>
                 <ListGroup variant='flush' className='mr-2'>
                   <ListGroup.Item>
                     <h1 className='text-center text-5xl font-Pacifico'>
-                      Trifles
+                      Pupcakes
                     </h1>
                   </ListGroup.Item>
                   <ListGroup>
@@ -101,67 +84,15 @@ const PupcakesScreen = ({ history }) => {
                               <img src={pupcakes} alt='pupcakes' />
                             </Card>
                           </Col>
-                          {/* <Col>
-                          <Card style={{ height: '100%' }} className='my-auto'>
-                            <div className='my-auto'>
-                              <div className='text-center'>
-                                <h3 className='inline'>Size</h3>
-                              </div>
-
-                              <Card
-                                onClick={(e) => setSize(10)}
-                                className={
-                                  size === 10
-                                    ? 'size_card_selected'
-                                    : 'size_card clickable'
-                                }
-                              >
-                                10 " ($87+)
-                              </Card>
-                              <Card
-                                onClick={(e) => setSize(8)}
-                                className={
-                                  size === 8
-                                    ? 'size_card_selected'
-                                    : 'size_card clickable'
-                                }
-                              >
-                                8 " ($67+)
-                              </Card>
-                              <Card
-                                onClick={(e) => setSize(6)}
-                                className={
-                                  size === 6
-                                    ? 'size_card_selected'
-                                    : 'size_card clickable'
-                                }
-                              >
-                                6 " ($57+)
-                              </Card>
-                              <Card
-                                onClick={(e) => setSize(4)}
-                                className={
-                                  size === 4
-                                    ? 'size_card_selected'
-                                    : 'size_card clickable'
-                                }
-                              >
-                                4 " ($27+)
-                              </Card>
-                            </div>
-                          </Card>
-                        </Col> */}
                         </Row>
-
-                        {/* <FloatingLabel label='Flavor'>
-                        <Form.Control
-                          as='select'
-                          onChange={(e) => setFlavor(e.target.value)}
+                        <h1
+                          style={{
+                            fontFamily: 'Pacifico',
+                            textAlign: 'center',
+                          }}
                         >
-                          <option value='Choose one...'>Choose one...</option>
-                          <option value='Vanilla'>Vanilla</option>
-                        </Form.Control>{' '}
-                      </FloatingLabel> */}
+                          $33/dozen
+                        </h1>
                         <p className='text-2xl py-5'>
                           <strong className='text-3xl font-Pacifico'>
                             Note:
@@ -237,11 +168,6 @@ const PupcakesScreen = ({ history }) => {
                         </button>
                       </Form>
                     </ListGroup.Item>
-                    {/* <ListGroup.Item
-                  style={{ display: 'flex', justifyContent: 'space-around' }}
-                >
-                 
-                </ListGroup.Item> */}
                   </ListGroup>
                 </ListGroup>
               </Col>
