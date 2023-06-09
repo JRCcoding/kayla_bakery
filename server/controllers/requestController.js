@@ -72,6 +72,27 @@ const updateRequestToPaid = asyncHandler(async (req, res) => {
     throw new Error('Request not found')
   }
 })
+// // @desc    Update request price
+// // @route   GET /api/requests/:id/price
+// // @access  Admin
+const updateRequestPrice = async (req, res) => {
+  try {
+    const { id } = req.params
+    const { price } = req.body
+
+    // Find the request by id and update the price value
+    const request = await Request.findById(id)
+    if (request) {
+      request.price = price
+      const updatedRequest = await request.save()
+      res.json(updatedRequest)
+    } else {
+      res.status(404).json({ message: 'Request not found' })
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' })
+  }
+}
 
 // @desc    Update request to delivered
 // @route   GET /api/requests/:id/deliver
@@ -115,4 +136,5 @@ export {
   updateRequestToDelivered,
   getMyRequests,
   getRequests,
+  updateRequestPrice,
 }

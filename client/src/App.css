@@ -68,7 +68,9 @@ html, body {
   transition: all 1.5s;
 }
 
-
+.trifles_img {
+  scale: .75;
+}
 @media only screen and (max-width: 500px) {
   .size_card {
     font-size: 1.3rem;
@@ -76,4 +78,9 @@ html, body {
   .size_card_selected {
     font-size: 1.5rem;
   }
+  .trifles_img {
+    scale: 1;
+  } 
 }
+
+

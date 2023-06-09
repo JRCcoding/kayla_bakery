@@ -46,7 +46,7 @@ const ProductCarousel = () => {
         <LinkContainer to={`/pupcakes`}>
           <Image
             src={pupcakes}
-            alt='Kaylala cupKakes'
+            alt='Kaylala pupKakes'
             fluid
             className='product_carousel_image rounded'
           />
@@ -60,7 +60,7 @@ const ProductCarousel = () => {
         <LinkContainer to={`/trifles`}>
           <Image
             src={trifles}
-            alt='Kaylala cupKakes'
+            alt='Kaylala Trifles'
             fluid
             className='product_carousel_image rounded'
           />

@@ -4,6 +4,7 @@ import {
   getMyRequests,
   getRequestById,
   getRequests,
+  updateRequestPrice,
   updateRequestToDelivered,
   updateRequestToPaid,
 } from '../controllers/requestController.js'
@@ -16,7 +17,8 @@ router
   .get(protect, admin, getRequests)
 router.route('/myrequests').get(protect, getMyRequests)
 router.route('/:id').get(protect, getRequestById)
-router.route('/:id/pay').put(updateRequestToPaid, admin)
+router.route('/:id/price').put(updateRequestPrice)
+router.route('/:id/pay').put(updateRequestToPaid)
 router.route('/:id/deliver').put(protect, admin, updateRequestToDelivered)
 
 export default router

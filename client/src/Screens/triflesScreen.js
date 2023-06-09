@@ -21,8 +21,6 @@ const TriflesScreen = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
   const [size, setSize] = useState()
-  const [flavor, setFlavor] = useState('Choose one...')
-  // const [edibleImage, setEdibleImage] = useState(false)
   const [qty, setQty] = useState(1)
   const [date, setDate] = useState('')
   const [additional, setAdditional] = useState('')
@@ -36,7 +34,6 @@ const TriflesScreen = ({ history }) => {
       createRequest({
         formType,
         size,
-        flavor,
         qty,
         date,
         additional,
@@ -98,77 +95,23 @@ const TriflesScreen = ({ history }) => {
                               className='my-auto mx-auto'
                               style={{ height: 'auto', width: '70%' }}
                             >
-                              <img src={trifles} alt='trifles' />
+                              <img
+                                src={trifles}
+                                alt='trifles'
+                                className='trifles_img'
+                              />
+                              <h1
+                                style={{
+                                  fontFamily: 'Pacifico',
+                                  textAlign: 'center',
+                                }}
+                              >
+                                $63/dozen
+                              </h1>
                             </Card>
                           </Col>
-                          {/* <Col>
-                          <Card style={{ height: '100%' }} className='my-auto'>
-                            <div className='my-auto'>
-                              <div className='text-center'>
-                                <h3 className='inline'>Size</h3>
-                              </div>
-
-                              <Card
-                                onClick={(e) => setSize(10)}
-                                className={
-                                  size === 10
-                                    ? 'size_card_selected'
-                                    : 'size_card clickable'
-                                }
-                              >
-                                10 " ($87+)
-                              </Card>
-                              <Card
-                                onClick={(e) => setSize(8)}
-                                className={
-                                  size === 8
-                                    ? 'size_card_selected'
-                                    : 'size_card clickable'
-                                }
-                              >
-                                8 " ($67+)
-                              </Card>
-                              <Card
-                                onClick={(e) => setSize(6)}
-                                className={
-                                  size === 6
-                                    ? 'size_card_selected'
-                                    : 'size_card clickable'
-                                }
-                              >
-                                6 " ($57+)
-                              </Card>
-                              <Card
-                                onClick={(e) => setSize(4)}
-                                className={
-                                  size === 4
-                                    ? 'size_card_selected'
-                                    : 'size_card clickable'
-                                }
-                              >
-                                4 " ($27+)
-                              </Card>
-                            </div>
-                          </Card>
-                        </Col> */}
                         </Row>
-                        <h1
-                          style={{
-                            fontFamily: 'Pacifico',
-                            textAlign: 'center',
-                          }}
-                        >
-                          $63/dozen
-                        </h1>
-                        {/* <FloatingLabel label='Flavor'>
-                        <Form.Control
-                          as='select'
-                          onChange={(e) => setFlavor(e.target.value)}
-                        >
-                          <option value='Choose one...'>Choose one...</option>
-                          <option value='Vanilla'>Vanilla</option>
-                        </Form.Control>{' '}
-                      </FloatingLabel> */}
+
                         <p className='text-2xl py-5'>
                           <strong className='text-3xl font-Pacifico'>
                             Note:
@@ -223,7 +166,6 @@ const TriflesScreen = ({ history }) => {
                               type='text'
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
-                              // required
                             />
                           </FloatingLabel>
                           <FloatingLabel label='Number:'>
@@ -244,11 +186,6 @@ const TriflesScreen = ({ history }) => {
                         </button>
                       </Form>
                     </ListGroup.Item>
-                    {/* <ListGroup.Item
-                  style={{ display: 'flex', justifyContent: 'space-around' }}
-                >
-                 
-                </ListGroup.Item> */}
                   </ListGroup>
                 </ListGroup>
               </Col>

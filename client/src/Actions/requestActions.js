@@ -142,7 +142,27 @@ export const payRequestAdmin = (requestId) => async (dispatch, getState) => {
     })
   }
 }
-
+// export const updatePriceRequest =
+//   (request, price) => async (dispatch, getState) => {
+//     const {
+//       userLogin: { userInfo },
+//     } = getState()
+//     const config = {
+//       adminPrice: price,
+//       headers: {
+//         Authorization: `Bearer ${userInfo.token}`,
+//       },
+//     }
+//     const { data } = await axios.put(
+//       `/api/requests/${request._id}/price`,
+//       null,
+//       config
+//     )
+//     dispatch({
+//       type: REQUEST_LIST_SUCCESS,
+//       payload: data,
+//     })
+//   }
 export const deliverRequest = (request) => async (dispatch, getState) => {
   try {
     dispatch({

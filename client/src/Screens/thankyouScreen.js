@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card } from 'react-bootstrap'
 
 const ThankyouScreen = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className='background_pattern' style={{ height: '100vh' }}>
       <Card className='mx-auto w-75 px-5'>

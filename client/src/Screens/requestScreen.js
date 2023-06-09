@@ -22,8 +22,6 @@ const RequestScreen = ({ match, history }) => {
 
   const [sdkReady, setSdkReady] = useState(false)
 
-  const [adminPrice, setAdminPrice] = useState(0)
-
   const dispatch = useDispatch()
 
   const requestDetails = useSelector((state) => state.requestDetails)
@@ -38,6 +36,7 @@ const RequestScreen = ({ match, history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const [adminPrice, setAdminPrice] = useState()
   if (!loading) {
     //   Calculate prices
     const addDecimals = (num) => {
@@ -47,6 +46,7 @@ const RequestScreen = ({ match, history }) => {
     // request.itemsPrice = addDecimals(
     //   request.requestItems.reduce((acc, item) => acc + item.price * item.qty, 0)
     // )
+    request.price = addDecimals(request.price)
   }
 
   useEffect(() => {
@@ -93,6 +93,23 @@ const RequestScreen = ({ match, history }) => {
     window.location.reload(false)
   }
 
+  const handlePriceChange = async (e) => {
+    e.preventDefault()
+
+    try {
+      const response = await axios.put(`/api/requests/${request._id}/price`, {
+        price: adminPrice,
+      })
+      console.log(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+    window.location.reload(false)
+  }
+
+  // const handlePriceChange = () => {
+  //   dispatch(updatePriceRequest(request, adminPrice))
+  // }
   return loading ? (
     <Loader />
   ) : error ? (
@@ -183,15 +200,25 @@ const RequestScreen = ({ match, history }) => {
                       </Col>
                     </Row>
                   </ListGroup.Item>
+                  {request.price !== '0' && (
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>Kayla's Price:</Col>
+                        <Col>
+                          <i>${request.price}</i>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  )}
 
-                  {!request.isPaid && !userInfo.isAdmin && (
+                  {!userInfo.isAdmin && request.price !== '0' && (
                     <ListGroup.Item>
                       {loadingPay && <Loader />}
                       {!sdkReady ? (
                         <Loader />
                       ) : (
                         <PayPalButton
-                          amount={adminPrice}
+                          amount={request.price}
                           onSuccess={successPaymentHandler}
                         />
                       )}
@@ -209,18 +236,48 @@ const RequestScreen = ({ match, history }) => {
                       </Button>
                     </ListGroup.Item>
                   )}
-                  {userInfo && userInfo.isAdmin && !request.isPaid && (
-                    <ListGroup.Item>
-                      <Button
-                        type='button'
-                        className='btn btn-block'
-                        onClick={paymentHandler}
-                      >
-                        Mark As Paid
-                      </Button>
-                    </ListGroup.Item>
-                  )}
+                  {userInfo &&
+                    userInfo.isAdmin &&
+                    !request.isPaid &&
+                    request.price !== '0' && (
+                      <ListGroup.Item>
+                        <Button
+                          type='button'
+                          className='btn btn-block'
+                          onClick={paymentHandler}
+                        >
+                          Mark As Paid
+                        </Button>
+                      </ListGroup.Item>
+                    )}
                 </ListGroup>
+                {userInfo && userInfo.isAdmin && (
+                  <div
+                    style={{
+                      dispaly: 'flex',
+                      flexDirection: 'column',
+                      width: '75%',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                    }}
+                  >
+                    <h3 style={{ display: 'inline' }}>Set price: &nbsp;</h3>
+                    <input
+                      type='text'
+                      value={adminPrice}
+                      onChange={(e) => setAdminPrice(e.target.value)}
+                      style={{
+                        display: 'inline',
+                        border: '1px solid gray',
+                        borderRadius: '45px',
+                        width: '25%',
+                      }}
+                    />
+                    <button type='submit' onClick={handlePriceChange}>
+                      Submit
+                    </button>
+                  </div>
+                )}
               </Card>
             </Col>
           </Row>

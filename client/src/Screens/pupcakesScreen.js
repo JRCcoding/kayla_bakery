@@ -81,18 +81,23 @@ const PupcakesScreen = ({ history }) => {
                               className='my-auto mx-auto'
                               style={{ height: 'auto', width: '70%' }}
                             >
-                              <img src={pupcakes} alt='pupcakes' />
+                              <img
+                                src={pupcakes}
+                                alt='pupcakes'
+                                className='trifles_img'
+                              />
+                              <h1
+                                style={{
+                                  fontFamily: 'Pacifico',
+                                  textAlign: 'center',
+                                }}
+                              >
+                                $33/dozen
+                              </h1>
                             </Card>
                           </Col>
                         </Row>
-                        <h1
-                          style={{
-                            fontFamily: 'Pacifico',
-                            textAlign: 'center',
-                          }}
-                        >
-                          $33/dozen
-                        </h1>
+
                         <p className='text-2xl py-5'>
                           <strong className='text-3xl font-Pacifico'>
                             Note:
