@@ -200,7 +200,7 @@ const RequestScreen = ({ match, history }) => {
                       </Col>
                     </Row>
                   </ListGroup.Item>
-                  {request.price !== '0' && (
+                  {request.price > 0 ? (
                     <ListGroup.Item>
                       <Row>
                         <Col>Kayla's Price:</Col>
@@ -209,9 +209,11 @@ const RequestScreen = ({ match, history }) => {
                         </Col>
                       </Row>
                     </ListGroup.Item>
+                  ) : (
+                    <></>
                   )}
 
-                  {!userInfo.isAdmin && request.price !== '0' && (
+                  {!userInfo.isAdmin && request.price > 0 && (
                     <ListGroup.Item>
                       {loadingPay && <Loader />}
                       {!sdkReady ? (
@@ -239,7 +241,7 @@ const RequestScreen = ({ match, history }) => {
                   {userInfo &&
                     userInfo.isAdmin &&
                     !request.isPaid &&
-                    request.price !== '0' && (
+                    request.price > 0 && (
                       <ListGroup.Item>
                         <Button
                           type='button'
