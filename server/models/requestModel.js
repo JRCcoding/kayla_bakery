@@ -15,7 +15,7 @@ const requestSchema = mongoose.Schema(
     name: { type: String, required: false },
     email: { type: String, required: false },
     number: { type: String, required: true },
-    price: { type: String, required: false },
+    price: { type: String, required: true, default: '0' },
     isPaid: {
       type: Boolean,
       required: true,
