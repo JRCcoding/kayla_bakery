@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Container, ListGroup, Row } from 'react-bootstrap'
-import { PayPalButton } from 'react-paypal-button-v2'
 import { useDispatch, useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {
@@ -212,8 +211,8 @@ const RequestScreen = ({ match, history }) => {
                   ) : (
                     <></>
                   )}
-
-                  {!userInfo.isAdmin && request.price > 0 && (
+                  {/* Payments hidden for customer */}
+                  {/* {!userInfo.isAdmin && request.price > 0 && (
                     <ListGroup.Item>
                       {loadingPay && <Loader />}
                       {!sdkReady ? (
@@ -225,7 +224,7 @@ const RequestScreen = ({ match, history }) => {
                         />
                       )}
                     </ListGroup.Item>
-                  )}
+                  )} */}
 
                   {userInfo && userInfo.isAdmin && !request.isDelivered && (
                     <ListGroup.Item>
