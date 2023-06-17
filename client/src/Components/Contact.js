@@ -1,9 +1,7 @@
-import React, { useRef, useState } from 'react'
-import 'animate.css'
-import { useForm } from '@formspree/react'
-import { Button, Card, FloatingLabel, Form } from 'react-bootstrap'
-import ThankYou from '../Components/ThankYou.js'
 import emailjs from '@emailjs/browser'
+import 'animate.css'
+import React, { useRef, useState } from 'react'
+import { Button, Card, FloatingLabel, Form } from 'react-bootstrap'
 
 import '../Styles/Contact.css'
 
@@ -14,20 +12,23 @@ const Contact = () => {
   const submitContact = (e) => {
     e.preventDefault()
 
-    // emailjs.sendForm('SERVICE ID', 'TEMPLATE ID', form.current, 'PUB KEY').then(
-    //   (result) => {
-    //     console.log(result.text)
-    //   },
-    //   (error) => {
-    //     console.log(error.text)
-    //   }
-    // )
+    emailjs
+      .sendForm(
+        'service_6z6e2ts',
+        'template_pex7joe',
+        form.current,
+        'Ts0xnPtn_iKfBC4r0'
+      )
+      .then(
+        (result) => {
+          console.log(result.text)
+        },
+        (error) => {
+          console.log(error.text)
+        }
+      )
     setIsSubmitted(true)
   }
-  // const [state, handleSubmit] = useForm('maykyddr')
-  // if (state.succeeded) {
-  //   return <ThankYou className='thank_you_card' />
-  // }
   return (
     <Card className=' px-0 py-3 center contact_card'>
       <h2 className='contact_title mx-auto'>Contact me!</h2>
@@ -45,11 +46,7 @@ const Contact = () => {
 
             <br />
             <FloatingLabel label='Email:'>
-              <Form.Control
-                type='email'
-                name='user_email'
-                placeholder='Email:'
-              />
+              <Form.Control type='email' name='reply_to' placeholder='Email:' />
             </FloatingLabel>
 
             <br />
