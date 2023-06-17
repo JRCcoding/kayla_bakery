@@ -150,7 +150,7 @@ const ProductsScreen = () => {
 
                       <Card.Body className='clickable'>
                         <Figure.Caption className='text-black mb-5'>
-                          <h4>--</h4>
+                          <h4>Custom layered desserts</h4>
                         </Figure.Caption>
                         <Figure.Caption className='text-black card_price'>
                           <h4>

@@ -33,7 +33,7 @@ const RequestListScreen = ({ history }) => {
           ) : error ? (
             <Message variant='danger'>{error}</Message>
           ) : (
-            <Table striped brequested hover responsive className='table-sm'>
+            <Table striped bordered hover responsive className='table-sm'>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -51,7 +51,16 @@ const RequestListScreen = ({ history }) => {
                     <td>{request._id.substring(19, 24)}</td>
                     <td>{request.name}</td>
                     <td>{request.formType}</td>
-                    <td>{request.createdAt.substring(0, 10)}</td>
+                    <td>
+                      {Date(request.createdAt)
+                        .toLocaleString('en-US', {
+                          timeZone: 'America/Chicago',
+                          month: '2-digit',
+                          day: '2-digit',
+                          year: 'numeric',
+                        })
+                        .substring(0, 11)}
+                    </td>
                     <td>
                       {request.isPaid ? (
                         <i
